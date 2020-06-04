@@ -35,9 +35,14 @@ https://pro.arcgis.com/en/pro-app/help
 ## Chapter 1
 # import point and polygon data into ArcGIS Pro
 
+A women's health NGO wants to build a new clinic in Botswana. Where is it needed? 
+We need location data: not only how many clinics there already are, but where those clinics are located. An shapefile is a traditional data-file in which geometries (points or shapes) are located in the world, defined by a lat-long coordinate. Such data can also be saved in a table, with lat.long data, or as a geoJson (a java native geospatial data structure). 
+
+Search for Botswana, shapefile, health . .
+The Bostwana Humnaitarian 
 Ian Mcharg made GIS maps using layers of transparent plastic, each plastic layer, roads, forests, views, was one aspect of a landscape, and together the thick layered study allowed him to see, if in a slightly muddy way, something about the relationships between all those aspects. Such a *suitability analysis* is based on relecting on the relationships between opportunities and contraints for development. Jump into GIS by making an Ian McHarg-style suitability development study, bringing together multiple layers of data about a place. One of the excitements in a GIS study is that you can combine unexpected datasets of a place- social, politcal, ecological and risk data allow one to see unexpected relationships.
 
-
+Geospatial data vector data has points, lines or polgons
 
 *note: Each chapter builds up an example study to follow. But you can always choose to create a similar study, using a location or question that is more interesting to you.*
 
