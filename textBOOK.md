@@ -41,4 +41,4 @@ Ian Mcharg made GIS maps using layers of transparent plastic, each plastic layer
 
 *note: Each chapter builds up an example study to follow. But you can always choose to create a similar study, using a location or question that is more interesting to you.*
 
-*move this to later when they save the data into the gdb* A GIS map doesnt really have any data in it- it is rather a series of instructions for 
+
