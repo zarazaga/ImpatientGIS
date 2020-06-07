@@ -3,9 +3,8 @@
 ## Introduction
 
 
-
-### Installling ArcGIS Pro
-The license for ArcGIS Pro is embedded into an arcGIS online account.  It seems confusing- why is an online account needed in order to get a desktop software? This is because ArcGIS Pro is fully integrated with the online software- you will access data throught the online portal, and can save and share your work through the online platform. Tools and tasks are visually similar. Think of it as two access points to one platform.  
+### Installing ArcGIS Pro
+The license for ArcGIS Pro is embedded into an arcGIS online account.  It seems confusing- why is an online account needed in order to get a desktop software? This is because ArcGIS Pro is fully integrated with the online software- you will access data through the online portal, and can save and share your work through the online platform. Tools and tasks are visually similar. Think of it as two access points to one platform.  
 The online user account is needed in order to sign on to Pro, and is individual to each user account, rather than to each computer. This means a downloaded copy can be loaded on any computer, but only people like you who have a license can sign into it. 
 
 **is there a free 180 days with this book?  I will need help with instructions for non-students!**
@@ -19,41 +18,70 @@ Download the ArcGIS Pro installer from the *My settings* page in your user profi
 4.	Click the download link next to ArcGIS Pro
 
 ### Is ArcGIS different from ArcMap and ArcGIS Pro?
-ArcGIS is a collective name for many different GIS softares made by ESRI. It has two primary desktop versions: ArcMap and ArcGIS Pro. In this book we will often shorten the name to '*Pro*'.  
+ArcGIS is a collective name for many different GIS software made by ESRI. It has two primary desktop versions: ArcMap and ArcGIS Pro. In this book we will often shorten the name to '*Pro*'.  
 Once you know how to work with one GIS software you will understand the structure of many others. Although it is written for this software, many of the instructions, ideas and tools here can be adapted to other GIS packages including open source software and older GIS packages. 
 
 ArcGIS Pro (like ArcMap) only works on Windows. A mac will need bootcamp or parallels: https://pro.arcgis.com/en/pro-app/get-started/run-pro-on-a-mac.htm
 
 ### Backup data for the exercises
-Gathering data is a primary part of doing geospatial work. Learning GIS here will include gathering and creating datasets. But a backup copy of the data is available at escri.com/impatientGIS. 
+Gathering data is a primary part of doing geospatial work. Learning GIS here will include gathering and creating datasets. But a backup copy of the data is available at esri.com/impatientGIS. 
 
 ### ArcGIS Pro Help
-Software changes fast. It's frustrating. As soon as one learn's something, a new aspect will be developed.  But you have to start somewhere. This book will not teach you everything you need to know- rather it is intended to give you enough knowledge to ask the right questions. The greatest source for using ArcGIS Pro is the ESRI help webiste. But often it is hard to understand the instructions until you have some GIS experience. In some ways the aim of this book it to make you comfortable making use of, and asking specific and difficult questions from, ESRI help.
+Software changes fast. It's frustrating. As soon as one learns something, a new aspect will be developed.  But you have to start somewhere. This book will not teach you everything you need to know- rather it is intended to give you enough knowledge to ask the right questions. The greatest source for using ArcGIS Pro is the ESRI help website. But often it is hard to understand the instructions until you have some GIS experience. In some ways the aim of this book it to make you comfortable making use of, and asking specific and difficult questions from, ESRI help.
 
 https://pro.arcgis.com/en/pro-app/help
 
 ## Chapter 1
 # import point and polygon data into a Geospatial Data System
 
-### 1.1 arcgis online
+### 1.1 ArcGIS online
 
-example: Where are schools in the UK, and how do their locations compare to population density? 
+*example: Where were pirates based in the Caribbean, and how do those locations relate to wind patterns?* 
 
 Go to arcGIS online on the web. Sign in. 
-*we are doing this partly to test that your sign-in will be working for ArcGIS Pro.* 
--> Go to 'Map" 
-![](./SHOTS_1/makeownmap.png) 
 
-If you are not familiar with it, then quickly go through the introduction to ArcGIS Online "Make your Own Map'. 
+*This step is partly to test that your sign-in is working - we will need it for ArcGIS Pro.* 
+
+-> Go to '**Map**" 
 
 
-Add some data, say, 'pirates'. 
+![](./SHOTS1/makeOwnMap.jpg)
 
-Dont underestimate online GIS; it is growing and powerful.  No longer only a visualisation tool, every year more analysis can be done online, with actul data manipulation tools.  But the biggest value of the online software is the ease of finding data already loaded within its structure.  
+If online GIS is not familiar then quickly go through the introduction to ArcGIS Online "Make your own map'.
 
-Desktop software is needed for larger datasets, and greater control of the work. But ArcGIS pro takes advntage of its cousin ArcGIS online (AGOL) through a 'portal' that connects your desktop software directly to the prepared online data.  
+![](./SHOTS1/1c_addData.jpg)
 
-A*example: A women's health NGO wants to build a new clinic in Botswana. location data of existing clinics can reveal the gaps where a new one would be most helpful?* 
+Add data: search for 'pirates', then some more datasets, such as wind, currents, or treasure.  Make a layered map!  
+
+It is easy. 
+
+![](./SHOTS1/pirates.jpg)
+
+Don't underestimate Online GIS; it is growing and powerful.  No longer only a visualization tool, every year more analysis can be done Online, with real analysis tools.  Many users won't need more than this. But for us, as Pro users, the biggest value of the online software will be the ease of finding data already loaded within its structure.  
+
+We need desktop software for our larger datasets, and complex analysis. But **Pro** takes advantage of its cousin ArcGIS online (AGOL) through a 'portal' that connects the desktop software directly to online data and other services. 
+
+This chapter will assume you have some confidence with AGOL, and are now ready to use it as the jumping-off point for Pro. 
+
+### 1.1 ArcGIS Pro
+
+*example: Where are primary schools located in Edinburgh, and how does that relate to 
+
+Open Pro, sign in, and open a new map template. For now, just 'Create a new project' with the default name and location. **Pro** opens a series of windows similar to the online service, with a map background in the center, a contents window on the left, and, often, a Catalog window on the right.
+
+![](./SHOTS1/1b_empty.jpg)
+
+If either the contents or catalogue windows dont show up, you can find them under the **View** tab.
+
+**View** -> Catalogue
+
+![](./SHOTS1/1b_catalogue.jpg)
+
+The easiest geospatial datasets to find, download and bring into our 
+
+LA women's health NGO wants to build a new clinic in Botswana. location data of existing clinics can reveal the gaps where a new one would be most helpful?* 
+
+*example: A women's health NGO wants to build a new clinic in Botswana. location data of existing clinics can reveal the gaps where a new one would be most helpful?* 
 
 Jump in! First search the internet for *shapefiles* about *health* in *Bostwana*. 
 
