@@ -33,9 +33,27 @@ Software changes fast. It's frustrating. As soon as one learn's something, a new
 https://pro.arcgis.com/en/pro-app/help
 
 ## Chapter 1
-# import point and polygon data into ArcGIS Pro
+# import point and polygon data into a Geospatial Data System
 
-*example: A women's health NGO wants to build a new clinic in Botswana. We need location data: where are existing clinics exist and where are the gaps where a new one would be most helpful?* 
+### 1.1 arcgis online
+
+example: Where are schools in the UK, and how do their locations compare to population density? 
+
+Go to arcGIS online on the web. Sign in. 
+*we are doing this partly to test that your sign-in will be working for ArcGIS Pro.* 
+-> Go to 'Map" 
+![](./SHOTS_1/makeownmap.png) 
+
+If you are not familiar with it, then quickly go through the introduction to ArcGIS Online "Make your Own Map'. 
+
+
+Add some data, say, 'pirates'. 
+
+Dont underestimate online GIS; it is growing and powerful.  No longer only a visualisation tool, every year more analysis can be done online, with actul data manipulation tools.  But the biggest value of the online software is the ease of finding data already loaded within its structure.  
+
+Desktop software is needed for larger datasets, and greater control of the work. But ArcGIS pro takes advntage of its cousin ArcGIS online (AGOL) through a 'portal' that connects your desktop software directly to the prepared online data.  
+
+A*example: A women's health NGO wants to build a new clinic in Botswana. location data of existing clinics can reveal the gaps where a new one would be most helpful?* 
 
 Jump in! First search the internet for *shapefiles* about *health* in *Bostwana*. 
 
