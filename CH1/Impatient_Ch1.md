@@ -34,7 +34,7 @@ https://pro.arcgis.com/en/pro-app/help
 ## Chapter 1
 # import point and polygon data into a Geospatial Data System
 
-### 1.1 ArcGIS online
+### 1.1 Quick dip into ArcGIS online
 
 *example: Where were pirates based in the Caribbean, and how do those locations relate to wind patterns?* 
 
@@ -61,23 +61,41 @@ Don't underestimate Online GIS; it is growing and powerful.  No longer only a vi
 
 We need desktop software for our larger datasets, and complex analysis. But **Pro** takes advantage of its cousin ArcGIS online (AGOL) through a 'portal' that connects the desktop software directly to online data and other services. 
 
+
+
 This chapter will assume you have some confidence with AGOL, and are now ready to use it as the jumping-off point for Pro. 
 
-### 1.1 ArcGIS Pro
+### 1.2 Jump into ArcGIS Pro
 
-*example: Where are primary schools located in Edinburgh, and how does that relate to 
+*example: Where are primary schools located in Edinburgh, and how does that relate to neighborhood population
 
-Open Pro, sign in, and open a new map template. For now, just 'Create a new project' with the default name and location. **Pro** opens a series of windows similar to the online service, with a map background in the center, a contents window on the left, and, often, a Catalog window on the right.
+Open Pro, sign in, and open a new map template. 'Create a new project' with the default name and location. Similar to the online GIS, the **Map** window should have the **Contents** window on the left, and the **Catalog** window on the right.
 
 ![](./SHOTS1/1b_empty.jpg)
 
-If either the contents or catalogue windows dont show up, you can find them under the **View** tab.
+
+
+If either window doesn't show up, you can find them under the **View** tab.
 
 **View** -> Catalogue
 
 ![](./SHOTS1/1b_catalogue.jpg)
 
-The easiest geospatial datasets to find, download and bring into our 
+### 1.3 Get some data:
+
+There is tons of open spatial data ready to use on the internet. We will Start with the familiar 'shapefiles'. Not really a single file, these data-folders contain both geometry imagery and other data files wrapped into a zip package, and are an excellent place to start. 
+
+Search for:
+
+
+### 1.4 Add that data:
+
+The Catalog is the site to add data. But our Folders under MyProject1 lead us to an empty data folder, and and empty MyProject1.gdb geodatabase.  Eventually we'd like to transfer all useful data into that barrel. But first lets get it onto the map! 
+
+A folder-link can connect ArcGIS PRo to the folder where you data is. **Insert** is the tab to start new stages- maps or cartography. 
+**Insert** -> Add Folder -> browse just the data folder -> OPEN. 
+The folder appears in your Catalogue. 
+Click 
 
 LA women's health NGO wants to build a new clinic in Botswana. location data of existing clinics can reveal the gaps where a new one would be most helpful?* 
 
