@@ -32,8 +32,6 @@ Don't underestimate Online GIS; it is growing and powerful.  No longer only a vi
 
 We need desktop software for our larger datasets, and complex analysis. But **Pro** takes advantage of its cousin ArcGIS online (AGOL) through a 'portal' that connects the desktop software directly to online data and other services. 
 
-
-
 This chapter will assume you have some confidence with AGOL, and are now ready to use it as the jumping-off point for Pro. 
 
 
@@ -55,14 +53,22 @@ If either window doesn't show up, you can find them under the **View** tab.
 
 ### 1.3 Get some data:
 
-Make a map. There is tons of open spatial data ready to use on the internet - search for data in Edinburgh. We start our search with the familiar 'shapefiles'. Not really a single file, these 'data-folder' packages contain both geometry imagery and other data files wrapped into a zip package, and are an excellent place to start a data search. 
+Make a map. We need some data.
+Vector data is the geometric data that forms the backbone of GIS analysis. Some of it is represented as points (such as towns), some of it is lines (like streets) and some is polygons (like countries.)
+Make a make with Data from Edinburgh, Scotland. Find out relationships withinin neighborhoods, where people shop, go to school, vote, and the roads they travel on.  There is tons of open spatial data ready to use on the internet. Start searching for the familiar file-type 'shapefile'. Not really a single file, these 'data-folder' packages contain both geometry imagery and other data files wrapped into a zip package, and are an excellent place to start a data search. 
 
 Search for:
-Save it into a folder on your computer- and remember where it is.
+'edinburgh shapefile'
+
+![](edinShape.png)
+
+Find and download some data. There's a useful polygon dataset under **Boundaries** called 'Natural Neighborhoods'.  You will see it has an attribute called "SUM_ELECTNO' of the numbers of people who participated in elections.  Download the Shapefile (not the full dataset). Move it into a folder you name 'edinburgh downloads' somewhere on your computer- unzip it that file - and remember where it is.
+
+While you are on this page, you could also download 'point' data from the 'shop survey' and 'polling stations' and 'line' data for the small Edinburgh tramline and also the 'gritting routes'. (a nice dataset of just those streets that are sufficiently important to receive priority gritting in winter)(A search for 'schools' reveals that there is no 'point' dataset for schools - the polygons for catchment zones are not useful for this exercise).  Move them to your 'edinburgh downloads' folder and unzip them all.  
 
 ### 1.4 Add that data:
 
-The Catalog is the site to add data. But our Folders under MyProject1 lead us to an empty data folder, and and empty MyProject1.gdb geodatabase.  Eventually we'd like to transfer all useful data into that barrel. But first lets just get it onto the map! 
+The Catalog is the site to add data. But our Folders under MyProject lead us to an empty data folder, and and empty MyProject.gdb geodatabase.  Eventually one will transfer all one's useful data into that barrel. But first lets just get what we have found onto the map! 
 
 ![](AddFOlder.png)
 
@@ -70,10 +76,17 @@ A folder-link can connect ArcGIS PRo to the folder where you data is. **Insert**
 **Insert** -> Add Folder -> browse to the folder which *contains* the data you want-> OPEN. 
 
 The folder appears in your Catalogue. 
-Click the folder and just drag the data onto your map.
+![](dataList.png)
+YOu can see clearly which is a point, line or polygon type.
+Click the folder and just drag the data onto your map: add *'Natural Neighborhoods','shop survey','polling stations','tram_line' and 'gritting routes'.
+
+Now save. First, there is no autosave in GIS. And without saving it runs slower. 
+
+
 
 LA women's health NGO wants to build a new clinic in Botswana. location data of existing clinics can reveal the gaps where a new one would be most helpful?* 
 
+It would be 
 *example: A women's health NGO wants to build a new clinic in Botswana. location data of existing clinics can reveal the gaps where a new one would be most helpful?* 
 
 Jump in! First search the internet for *shapefiles* about *health* in *Bostwana*. 
