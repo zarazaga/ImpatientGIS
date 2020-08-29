@@ -7,7 +7,9 @@
 
 *example: Where were pirates based in the Caribbean, and how do those locations relate to wind patterns?* 
 
-Go to arcGIS online on the web. Sign in. 
+Go to arcGIS online on the web. Sign in.   
+https://www.arcgis.com
+
 
 *This step is partly to test that your sign-in is working - we will need it for ArcGIS Pro.* 
 
@@ -53,19 +55,22 @@ If either window doesn't show up, you can find them under the **View** tab.
 
 ### 1.3 Get some data:
 
-There is tons of open spatial data ready to use on the internet. We will Start with the familiar 'shapefiles'. Not really a single file, these data-folders contain both geometry imagery and other data files wrapped into a zip package, and are an excellent place to start. 
+Make a map. There is tons of open spatial data ready to use on the internet - search for data in Edinburgh. We start our search with the familiar 'shapefiles'. Not really a single file, these 'data-folder' packages contain both geometry imagery and other data files wrapped into a zip package, and are an excellent place to start a data search. 
 
 Search for:
-
+Save it into a folder on your computer- and remember where it is.
 
 ### 1.4 Add that data:
 
-The Catalog is the site to add data. But our Folders under MyProject1 lead us to an empty data folder, and and empty MyProject1.gdb geodatabase.  Eventually we'd like to transfer all useful data into that barrel. But first lets get it onto the map! 
+The Catalog is the site to add data. But our Folders under MyProject1 lead us to an empty data folder, and and empty MyProject1.gdb geodatabase.  Eventually we'd like to transfer all useful data into that barrel. But first lets just get it onto the map! 
+
+![](AddFOlder.png)
 
 A folder-link can connect ArcGIS PRo to the folder where you data is. **Insert** is the tab to start new stages- maps or cartography. 
-**Insert** -> Add Folder -> browse just the data folder -> OPEN. 
+**Insert** -> Add Folder -> browse to the folder which *contains* the data you want-> OPEN. 
+
 The folder appears in your Catalogue. 
-Click 
+Click the folder and just drag the data onto your map.
 
 LA women's health NGO wants to build a new clinic in Botswana. location data of existing clinics can reveal the gaps where a new one would be most helpful?* 
 
