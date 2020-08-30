@@ -1,9 +1,9 @@
 # ImpatientGIS
 
 ## Chapter 1
-# import point and polygon data into a Geospatial Data System
+# Import vector data into a Geospatial Data System, and tell a story.
 
-### 1.1 Quick dip into ArcGIS online
+## 1.1 Quick dip into ArcGIS online
 
 *example: Where were pirates based in the Caribbean, and how do those locations relate to wind patterns?* 
 
@@ -35,7 +35,7 @@ We need desktop software for our larger datasets, and complex analysis. But **Pr
 This chapter will assume you have some confidence with AGOL, and are now ready to use it as the jumping-off point for Pro. 
 
 
-### 1.2 Jump into ArcGIS Pro
+## 1.2 Jump into ArcGIS Pro
 
 Open Pro, sign in, and open a new map template. 'Create a new project' with the default name and location. Similar to the online GIS, the **Map** window should have the **Contents** window on the left, and the **Catalog** window on the right.
 
@@ -47,7 +47,7 @@ If either window doesn't show up, you can find them under the **View** tab.
 
 ![](./SHOTS1/1b_catalogue.jpg)
 
-### 1.3 Get some data:
+## 1.3 Find some data
 
 Make a map. We need some data.
 Vector data is the geometric data that forms the backbone of GIS analysis. Some of it is represented as points (such as towns), some of it is lines (like streets) and some is polygons (like countries.)
@@ -64,7 +64,7 @@ Find and download some data. There's a useful polygon dataset under **Boundaries
 
 While you are on this page, you could also download 'point' data from the 'shop survey' and 'polling stations' and 'line' data for the small Edinburgh tramline and also the 'gritting routes'. (a nice dataset of just those streets that are sufficiently important to receive priority gritting in winter)(A search for 'schools' reveals that there is no 'point' dataset for schools - the polygons for catchment zones are not useful for this exercise).  Move them to your 'edinburgh downloads' folder and unzip them all.  
 
-### 1.4 Add that data:
+## 1.4 Add vector data to a Map
 
 The Catalog is the site to add data. But our Folders under MyProject lead us to an empty data folder, and and empty MyProject.gdb geodatabase.  Eventually one will transfer all one's useful data into that barrel. But first lets just get what we have found onto the map! 
 
@@ -78,13 +78,15 @@ The folder appears in your Catalogue.
 ![](dataList.png)
 
 YOu can see clearly which is a point, line or polygon type.
-Click the folder and just drag the data onto your map: add *'Natural Neighborhoods','shop survey','polling stations','tram_line' and 'gritting routes'.
-
-SAVE. There is no autosave in GIS. And without saving it runs slower. 
+Click the folder and just drag the data onto your map: add *'Natural Neighborhoods','shop survey','polling stations','tram_line' and 'gritting routes'. 
 
 ![](ScreenAdd.png)
 
-Turn off some busy layers. Slide them above or below each other. Select any layer. A new **Feature Layer** series of tabs pop up above the ribbon. 
+**SAVE**. There is no autosave in GIS.
+
+## 1.5 Work with Feature Layers
+
+**Feature Classes** (or sets of data) become **Layers**, once you drag them onto a map and visualise them. Turn off some busy layers. Slide them above or below each other. Select any layer. A new **Feature Layer** series of tabs pop up above the ribbon. 
 
 ![](FeatureLayer.png)
 
@@ -97,18 +99,21 @@ Turn off some busy layers. Slide them above or below each other. Select any laye
 
 ![](AddLables.png)
 
-**Data** > **Table** > **Attribute  Table** opens the data table behind each layer's visualisation. *(Here you could also export each layer here to extract it from the shapeful folders and save it into your project Global database (.gdb).)*
+**Data** > **Table** > **Attribute  Table** opens the data table behind each layer's visualisation. *(Here you could also choose to export each layer here to extract it from the shapeful folders and save it into your project Global database (.gdb).)*
 
 ![](DataAttribute.png)
 
 *(For many tabs there is also a shortcut which one eventually learns: e.g. shortcut to symbology by clicking on the shape in the 'Contents' window, shortcut to attribute table with a right-click on the layer)*
 
-Ask some questions of the data - -
+## 1.6 Ask Questions of the Data
 
-*for example: Which are the primary roads for shopping?*  This might help the city select priorities for extending the tram-lines.
+*for example: Which are the primary roads for shopping?  This might help the city select priorities for extending the tram-lines.*
+
 ![](TramLine.png)
 
 *for example: How does the location of polling stations relate to amount of voting of a neighborhood population?*
+
+## 1.7 Classify polygon Data
 
 **Choropleth maps** to show quantity
 
@@ -127,10 +132,12 @@ And then test different **Classification Methods** to find one that gives a bett
 
 ![](ClassificationMethods.png)
 
-Design layer choises, colors, lables and Classification Method to best communicate the issue.  
+## 1.6 Map Design
 
-Clearly some very dense neighborhoods seem to have insufficient polling sites!  Maybe Pilton could use a new site? 
+Visual communication requires careful observation of the relationships between color, scale and ideas: design the layer choices, colors, lables and Classification Method to best communicate the study issue.  Design it your way!
+
+*Clearly some very dense neighborhoods seem to have insufficient polling sites!  Maybe Pilton could use a new site?*
 
 ![](Pilton.png)
 
-Save the map for future analysis.
+**SAVE** the map for future analysis.
