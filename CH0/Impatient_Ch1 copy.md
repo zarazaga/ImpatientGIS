@@ -58,7 +58,7 @@ Make a make with Data from Edinburgh, Scotland. Find out relationships withinin 
 Search for:
 **'edinburgh shapefile'**
 
-![](SHOTS1/edinShape.png)
+![](edinShape.png)
 
 Find and download some data. There's a useful polygon dataset under **Boundaries** called 'Natural Neighborhoods'.  You will see it has an attribute called "SUM_ELECTNO' of the numbers of people who participated in elections.  Download the Shapefile (not the full dataset). Move it into a folder you name 'edinburgh downloads' somewhere on your computer- unzip it that file - and remember where it is.
 
@@ -68,19 +68,19 @@ While you are on this page, you could also download 'point' data from the 'shop 
 
 The Catalog is the site to add data. But our Folders under MyProject lead us to an empty data folder, and and empty MyProject.gdb geodatabase.  Eventually one will transfer all one's useful data into that barrel. But first lets just get what we have found onto the map! 
 
-![](SHOTS1/AddFOlder.png)
+![](AddFOlder.png)
 
 A folder-link can connect ArcGIS PRo to the folder where you data is. **Insert** is the tab to start new stages- maps or cartography. 
 **Insert** -> Add Folder -> browse to the folder which *contains* the data you want-> OPEN. 
 
 The folder appears in your Catalogue. 
 
-![](SHOTS1/dataList.png)
+![](dataList.png)
 
-You can see clearly which is a point, line or polygon type.
+YOu can see clearly which is a point, line or polygon type.
 Click the folder and just drag the data onto your map: add *'Natural Neighborhoods','shop survey','polling stations','tram_line' and 'gritting routes'. 
 
-![](SHOTS1/ScreenAdd.png)
+![](ScreenAdd.png)
 
 **SAVE**. There is no autosave in GIS.
 
@@ -88,20 +88,20 @@ Click the folder and just drag the data onto your map: add *'Natural Neighborhoo
 
 **Feature Classes** (or sets of data) become **Layers**, once you drag them onto a map and visualise them. Turn off some busy layers. Slide them above or below each other. Select any layer. A new **Feature Layer** series of tabs pop up above the ribbon. 
 
-![](SHOTS1/FeatureLayer.png)
+![](FeatureLayer.png)
 
 **Appearance** > **Symbology** > **Symbol** (click on the dot) provides a window to change shape, color, size, fill and boundary color. Figure out, for example, how to remove the boundary of a point and change the color.
 
-![](SHOTS1/ChangeColor.png)
+![](ChangeColor7.png)
 
 
 **Labeling** > **Lable Class** > **Field** provides options for making text-data visible (NATURALCOM shows the neighborhood names), and changing text style, size and placement. Clicking the **Layer** > **Label** box/image turns them on/off.
 
-![](SHOTS1/AddLables.png)
+![](AddLables.png)
 
 **Data** > **Table** > **Attribute  Table** opens the data table behind each layer's visualisation. *(Here you could also choose to export each layer here to extract it from the shapeful folders and save it into your project Global database (.gdb).)*
 
-![](SHOTS1/DataAttribute.png)
+![](DataAttribute.png)
 
 *(For many tabs there is also a shortcut which one eventually learns: e.g. shortcut to symbology by clicking on the shape in the 'Contents' window, shortcut to attribute table with a right-click on the layer)*
 
@@ -109,7 +109,7 @@ Click the folder and just drag the data onto your map: add *'Natural Neighborhoo
 
 *for example: Which are the primary roads for shopping?  This might help the city select priorities for extending the tram-lines.*
 
-![](SHOTS1/TramLine.png)
+![](TramLine.png)
 
 *for example: How does the location of polling stations relate to amount of voting of a neighborhood population?*
 
@@ -120,17 +120,17 @@ Click the folder and just drag the data onto your map: add *'Natural Neighborhoo
 Try making graduated colored polygons, to reveal the quantity of electors in each neighborhood. 
 Turn off the other layers, and the confusing lables. 
 
-![](SHOTS1/GraduatedColors.png)
+![](GraduatedColors.png)
 
 **Symbology > Primary symbology > Graduated Colors > Field > SUM_ELECTNO **(sum of the election numbers).
 
-![](SHOTS1/GraduatedColors2.png)
+![](GraduatedColors2.png)
 
 Not very useful. The biggest population is in the biggest neighborhood- but we'd rather show density.  Normalize the total number by dividing by area **Normalization > Shapearea >
 
 And then test different **Classification Methods** to find one that gives a better spread of colors across the density range. The methods are clearly described in the drop-down. 
 
-![](SHOTS1/ClassificationMethods.png)
+![](ClassificationMethods.png)
 
 ## 1.6 Map Design
 
@@ -138,6 +138,6 @@ Visual communication requires careful observation of the relationships between c
 
 *Clearly some very dense neighborhoods seem to have insufficient polling sites!  Maybe Pilton could use a new site?*
 
-![](SHOTS1/Pilton.png)
+![](Pilton.png)
 
 **SAVE** the map for future analysis.
