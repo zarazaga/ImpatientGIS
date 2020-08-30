@@ -37,13 +37,9 @@ This chapter will assume you have some confidence with AGOL, and are now ready t
 
 ### 1.2 Jump into ArcGIS Pro
 
-*example: Where are primary schools located in Edinburgh, and how does that relate to neighborhood population
-
 Open Pro, sign in, and open a new map template. 'Create a new project' with the default name and location. Similar to the online GIS, the **Map** window should have the **Contents** window on the left, and the **Catalog** window on the right.
 
 ![](./SHOTS1/1b_empty.jpg)
-
-
 
 If either window doesn't show up, you can find them under the **View** tab.
 
@@ -55,10 +51,12 @@ If either window doesn't show up, you can find them under the **View** tab.
 
 Make a map. We need some data.
 Vector data is the geometric data that forms the backbone of GIS analysis. Some of it is represented as points (such as towns), some of it is lines (like streets) and some is polygons (like countries.)
-Make a make with Data from Edinburgh, Scotland. Find out relationships withinin neighborhoods, where people shop, go to school, vote, and the roads they travel on.  There is tons of open spatial data ready to use on the internet. Start searching for the familiar file-type 'shapefile'. Not really a single file, these 'data-folder' packages contain both geometry imagery and other data files wrapped into a zip package, and are an excellent place to start a data search. 
+Make a make with Data from Edinburgh, Scotland. Find out relationships withinin neighborhoods, where people shop, go to school, vote, and the roads they travel on.  There is tons of open spatial data ready to use on the internet. Start searching for the familiar file-type 'shapefile', an excellent place to start a data search. 
+
+*Not really a single file, a **shapefile** is a geospatial data-folder package which containts data, geometries (point, line or shapes) and location, usually lat-long coordinates, all wrapped into a zip package. Such information could alternatively be saved in a table, with lat.long data, or as a geoJson (a java geospatial data structure)*.  
 
 Search for:
-'edinburgh shapefile'
+**'edinburgh shapefile'**
 
 ![](edinShape.png)
 
@@ -76,29 +74,63 @@ A folder-link can connect ArcGIS PRo to the folder where you data is. **Insert**
 **Insert** -> Add Folder -> browse to the folder which *contains* the data you want-> OPEN. 
 
 The folder appears in your Catalogue. 
+
 ![](dataList.png)
+
 YOu can see clearly which is a point, line or polygon type.
 Click the folder and just drag the data onto your map: add *'Natural Neighborhoods','shop survey','polling stations','tram_line' and 'gritting routes'.
 
-Now save. First, there is no autosave in GIS. And without saving it runs slower. 
+SAVE. There is no autosave in GIS. And without saving it runs slower. 
+
+![](ScreenAdd.png)
+
+Turn off some busy layers. Slide them above or below each other. Select any layer. A new **Feature Layer** series of tabs pop up above the ribbon. 
+
+![](FeatureLayer.png)
+
+**Appearance** > **Symbology** > **Symbol** (click on the dot) provides a window to change shape, color, size, fill and boundary color. Figure out, for example, how to remove the boundary of a point and change the color.
+
+![](ChangeColor7.png)
 
 
+**Labeling** > **Lable Class** > **Field** provides options for making text-data visible (NATURALCOM shows the neighborhood names), and changing text style, size and placement. Clicking the **Layer** > **Label** box/image turns them on/off.
 
-LA women's health NGO wants to build a new clinic in Botswana. location data of existing clinics can reveal the gaps where a new one would be most helpful?* 
+![](AddLables.png)
 
-It would be 
-*example: A women's health NGO wants to build a new clinic in Botswana. location data of existing clinics can reveal the gaps where a new one would be most helpful?* 
+**Data** > **Table** > **Attribute  Table** opens the data table behind each layer's visualisation. *(Here you could also export each layer here to extract it from the shapeful folders and save it into your project Global database (.gdb).)*
 
-Jump in! First search the internet for *shapefiles* about *health* in *Bostwana*. 
+![](DataAttribute.png)
 
-*A **shapefile** is a geospatialdata-file in which information is packaged along with geometries (points or shapes) and their location in the world, usually defined by a lat-long coordinate. Such data can also be saved in a table, with lat.long data, or as a geoJson (a java native geospatial data structure)*.  
+*(For many tabs there is also a shortcut which one eventually learns: e.g. shortcut to symbology by clicking on the shape in the 'Contents' window, shortcut to attribute table with a right-click on the layer)*
 
-You search for Botswana, shapefile, health, and you find the *Bostwana Humnaitarian Data Exchange*. That sounds promising. Narrowing the format options to *zipped shapefiles* reduces the length of the list. I downloaded *Botswana-healthsites* and . Try to avoid raster data which shows, for example population density per-pixel.
+Ask some questions of the data - -
 
+*for example: Which are the primary roads for shopping?*  This might help the city select priorities for extending the tram-lines.
+![](TramLine.png)
 
+*for example: How does the location of polling stations relate to amount of voting of a neighborhood population?*
 
-Geospatial data vector data has points, lines or polgons
+**Choropleth maps** to show quantity
 
-*note: Each chapter builds up an example study to follow. But you can always choose to create a similar study, using a location or question that is more interesting to you.*
+Try making graduated colored polygons, to reveal the quantity of electors in each neighborhood. 
+Turn off the other layers, and the confusing lables. 
 
+![](GraduatedColors.png)
 
+**Symbology > Primary symbology > Graduated Colors > Field > SUM_ELECTNO **(sum of the election numbers).
+
+![](GraduatedColors2.png)
+
+Not very useful. The biggest population is in the biggest neighborhood- but we'd rather show density.  Normalize the total number by dividing by area **Normalization > Shapearea >
+
+And then test different **Classification Methods** to find one that gives a better spread of colors across the density range. The methods are clearly described in the drop-down. 
+
+![](ClassificationMethods.png)
+
+Design layer choises, colors, lables and Classification Method to best communicate the issue.  
+
+Clearly some very dense neighborhoods seem to have insufficient polling sites!  Maybe Pilton could use a new site? 
+
+![](Pilton.png)
+
+Save the map for future analysis.
