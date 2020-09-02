@@ -4,7 +4,7 @@
 ## Chapter 2
 # Visualize Categories and Quantities of Data.
 
-## 2.1 Classify polygon Data
+## 2.1 Classify Polygon Data
 
 *Invent another Question to ask the data . .How does the location of polling stations relate to amount of voting of a neighborhood population?*
 
