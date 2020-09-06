@@ -4,10 +4,35 @@
 ## Chapter 3
 # Visualize Categories and Quantities of Data.
 
-## 3.1 Visualise that data in 3d
-*Where are the most densely inabited parts of the city?*
 
-To get into 3-d we need to check our coordinate system - are projecting to a curved surface or a flat surface?
+
+Rather than normalising the data, by dividing by are on the fly, make a new field that will serve as the count of 'density' of neighborhood participation. 
+
+## 3.1 Working with Fields
+
+In the attribute table, Add a field
+
+![](SHOTS3/addField.png)
+
+Make a space for a 'float' type for a calculation of activist density. 
+
+![](FieldDensity.png)
+
+At the top of the window/ ribbon is a new 'save' button for this Field editing session. **Save** the modificatinos to the table.
+
+In the Attribute table, Right-Click on the field to **Calculate Field**
+![](SHOTS3/calculate.png)
+
+Double-clicking a field name brings that field into the calculation.  Multiply the ELECTNO by 1000 to have density results in sq.m instead of sq.Km.  
+
+![](SHOTS3/AcDensity.png) 
+
+Run the calculation. Then check the new field. Right-click on the column and **Sort Descending** to check that the field has populated with data. Note that there are many neighborhoods with '0'in this column. 
+
+## 3.2 Visualise that data in 3d
+*Where are the most densely active neighborhoods in the city?*
+
+To get the data into 3-d first check our coordinate system - are projecting to a curved surface or a flat surface?
 
 On the Anlysis Tab > Environments >
 
@@ -43,3 +68,4 @@ Create a new custom 'Field' expression.
 'Units' are meaningly for this 'z' dimension; select one that looks good. 'Kilometers' seems to allow a good vertical spread here. 
 
 ![](SHOTS3/3d.png)
+
