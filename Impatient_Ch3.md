@@ -4,68 +4,99 @@
 ## Chapter 3
 # Visualize Categories and Quantities of Data.
 
+## 3.1 Work with data
+
+Neighborhood activists need good places to meet, like cafes or pubs. Find out whether the level of activism has any relation to the number of cafes. 
+
+Back to the 2d map. 
+
+Turn on the layer for Shops, and select a sub-set of the data that is ONLY the shops that are cafes, restaurants and pubs.
+
+**Using Select by Attribute**
+
+![](SHOTS3/2select.png)
+
+Shop-survey has an attribute called 'Descrip10' with use type. Right-click and 'Sort Ascending' to read through the list of names.  Its not a very tidy data-set. Note that there are sometimes several similar names for the same sort of use. Create two new layers by extracting coffeeshop/cafes, and pubs/bars. 
+There is another attribute called 'CLASS10'. The class type 3 appears to map nicely to the combination of cafes, bars and restaurants. In order to select- one could select from the attributes in DECRIP 10   (but it takes a long time since the data is messy)
+
+OR one could select by attributes in CLASS 10
+![](SHOTS3/selectAttr2.png)
+**Map** > Select by attribute > useclass10 = Class 3
+
+This selection is now visible in the table.
+
+![](SHOTS3/selection.png)
+
+Export those selected features to create a new data set. 
+**Data** > Export Features > Feature Class to Feature Class
+
+The is a geoprocessing tool - a first, fairly simple manipulation of data.
+
+![](SHOTS3/export.png)
+
+This new dataset will be placed INSIDE the globaldatabase (.gdb) .  *One can use the 'export features tool to export the whole dataset, into the gdb, or to export only certain elements of it, as here.* 
+
+![](SHOTS3/feature2feature.png)
+
+After using the select tool, remember to **clear** the selection.
+
+![](SHOTS3/2select.png)
+
+The restaurants and cafes seem to be more connected to the road pattern than the neighborhoods.
+![](SHOTS3/AllPubCafe.png)
+
+Rather than extracting data according to its attributes it can be extracted according to its location. 
+*How many cafes and restuarants are within 0.5 km of the tram line?*
+
+![](withTramkm.png)
 
 
-Rather than normalising the data, by dividing by are on the fly, make a new field that will serve as the count of 'density' of neighborhood participation. 
+In the center of the city is the most touristy neighborhood of 'Old Town.  
 
-## 3.1 Working with Fields
+## 3.2 Symbology: Heat Map & dot density
 
-In the attribute table, Add a field
+Clearly cafes and restaurants are not well distributed. Messing around with the symbology allows differnt visualisations of the same data- communicating the story in different ways.
 
-![](SHOTS3/addField.png)
+**Appearance** > Symbology > Primary Symbology > Heat Map
+This symbology reveals the density of points in a dataset. 
 
-Make a space for a 'float' type for a calculation of activist density. 
+![](HeatMap.png)
 
-![](FieldDensity.png)
+This allows one to see that the center of the city is the most densly provided with eaterys. 
 
-At the top of the window/ ribbon is a new 'save' button for this Field editing session. **Save** the modificatinos to the table.
+![](EdinHeatMap.png)
 
-In the Attribute table, Right-Click on the field to **Calculate Field**
-![](SHOTS3/calculate.png)
+Changing the symbology of the neighborhood layer allows one to see clearly that there are active zones which could use a community cafe!
 
-Double-clicking a field name brings that field into the calculation.  Multiply the ELECTNO by 1000 to have density results in sq.m instead of sq.Km.  
+![](DotDensity.png)
 
-![](SHOTS3/AcDensity.png) 
+## 3.3 Statistics
 
-Run the calculation. Then check the new field. Right-click on the column and **Sort Descending** to check that the field has populated with data. Note that there are many neighborhoods with '0'in this column. 
+One can use simple geospatial statistics tools to bring together data. 
+*How many bars and restaurants are within each neighborhood?*
 
-## 3.2 Visualise that data in 3d
-*Where are the most densely active neighborhoods in the city?*
+There are hundreds of tools in a GIS software like ArcGIS Pro. And new ones are alwasy added. Eventually one can write one's own tools. Some tools are used frequently, and some are only used by specialists in their own area.  
+Many GIS tasks become so common one forgets they are geoprocessing tools. 
+ie- the tool **Feature Class to Feature Class** (when data was exported to the geodatabase) was already an example tested here. 
 
-To get the data into 3-d first check our coordinate system - are projecting to a curved surface or a flat surface?
+Some of the most common tools appear as icons in the Analysis ribbon. But most tools are in the toolbox. 
 
-On the Anlysis Tab > Environments >
+![](findTools.png)
 
-![](SHOTS3/BritishNat.png) 
+The next chapter will jump into various different kinds of **Spatial Tools**.  Statistics are **Analysis tools**
 
-The British National Grid is like a flattened grad set across the UK. So we will make a local 'scene'.
+![](toolbox.png)
 
-*The choice between local and global depends on the projection type - how the world is seen on the screen. This specific data came in using a 'flattened' projection, like a folded city-map, rather than the geographical system like a classroom globe.*
+**Analysis** > Tools > **Summarize Within** > 
 
-View > Convert > to Local Scene
+![](Summarize.png)
 
-![](SHOTS3/Convert.png)
+The new CafeBar)neighborhoods layer, (which has been saved in the geodatabase) can now be symbolised as a polygon layer, to show those neighborhoods that have more, and fewer, cafes.
 
-Return to **Map**>Explore> Use the mouse wheel button to zoom back from the 3d model. 
+![](cafePoly.png)
 
-Drag the layer from the **2D Layers** up into the **3D Layers** section in *Contents* to create a volumetric visualisation of the people-count in SUM_ELECNO.  
+And this new data can be shown in relation to the tram line, and the important city streets. 
 
-Instruct the data to read people-count as the 'z'value.
 
-**Feature Layer** > Appearance > Extrusion > Type > Absolute Height.
-The vertical value **Field** is SUM_ELECNO.
 
-It looks terrible! That vertical value is too high.  AND, as before, it is absolute value of people. We need to normalise that number again by dividing by area, and then select a better vertical proportion.
-
-Create a new custom 'Field' expression.   
- ![](SHOTS3/Expression.png)
- Double-click on 'SUM_ELECNO' and divide by 'Shapearea'. Numbers are all <1 so multiply SUM_ELECNO by 100.  
- 
- **$feature.SUM_ELECNO*100/$feature.Shapearea**
- 
-![](SHOTS3/expressionBuilder.png)
-
-'Units' are meaningly for this 'z' dimension; select one that looks good. 'Kilometers' seems to allow a good vertical spread here. 
-
-![](SHOTS3/3d.png)
 
