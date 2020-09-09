@@ -93,9 +93,8 @@ The next chapter will jump into various different kinds of **Spatial Tools**.  S
 
 The new CafeBar)neighborhoods layer, (which has been saved in the geodatabase) can now be symbolised as a polygon layer, to show those neighborhoods that have more, and fewer, cafes.
 
-![](cafePoly.png)
-
-And this new data can be shown in relation to the tram line, and the important city streets. 
+And this new data can be shown in relation to the tram line, to build on a discussion of development of that line. 
+![](tramCafe.png)
 
 
 
