@@ -35,27 +35,50 @@ During the 1854 cholera outbreak Snow mapped the 13 public wells and all the kno
 
 Explore the cholera outbreak of 1854 and re-determine whether there is evidence that the Broad Street pump is the source of the outbreak. Map the locations and numbers of the cholera deaths, and geospatially compare them to the nearest water pumps.
 
-### 4.2 Illustrate London's population density
+### 4.2 Join a Table: Illustrate London's population density
 
 Open a new ArcGIS Pro document and **Insert** > New Map.
 
 Add London Borough data: **Insert** -> Add Folder -> browse to the folder which *contains* the data (not the data itself)-> OPEN. 
 
-Browse to the folder > **data > London_Borough.shp**. Drag the shapefile onto the map.
+Browse to the folder > **data > London_Borough.shp** Drag the shapefile onto the map.  And drag the table **2018Lon_HousingBoro.csv** onto the contents file.  
 
 ![](/SNOW/london.png)  
-Look at the attribute table to figure out what data is part of this layer that we could use to illustrate population density. 
 
-**Feature Layer** > *Data* > attribute table *( or shortcut- right-click layer)*
+Click on the London_borough Layer.  Open **Feature Layer** > *Data* > attribute table *( or shortcut- right-click layer)*
 
-![](SNOW/attribute_table.png) 
+![](SNOW/attributeTable.png)
 
-The column  POPDEN, describes the population density of each London borough. 
+There isn't much useful data here, beyond the shapes of the boroughs. But there is a GSS_CODE, which will allow the connecting of this dataset to any other data-table which has the same code. Rows with matching numbers can be joined between one dataset and another. 
 
-Change the symbology to show relative population density. 
+Open the table. **Standalone data** > Table > Attribute Table. 
+
+Look at the attribute table to figure out first, if it shares the GSS_CODE, and secondly what data we could join to the borough layers to illustrate population density. 
+
+![](SNOW/table.png)
+
+PopPr_SqKm defines population density per square Km for each London borough. Join the table to the feature layer.
+
+Select the London_borough Layer. **Feature Layer** > Data > Joins (down arrow) > Add Join. *(Shortcut: right-click on the layer > Joins & Relates > Add Join)*
+Input Join Field: **GSS_CODE**; Output Join Field: **Code**
+
+![](SNOW/Join.png)
+
+Check in the attribute table of the London_borough Layer to make sure that the join worked!
+
+Save the joined file as a new, stable Layer in the project globaldatabase (gbd). 
+**Feature Layer** > Data > Export >Feature Class to Feature Class
+Output Feature Class: **London** > Run.
+
+![](export.png)
+
+*(the backup data folder contains a joined London shapefile- just in case)*
+
+Change the symbology of the London layer to show relative population density. 
+
 **Feature Layer** > Appearance > Symbology > slide down to **Graduated Colors**
 
-Field > **POPDEN** > Select *quantile* classification method to show equal numbers of boroughs per class.
+Field > **PopPr_sqKm** > Select *quantile* classification method to show equal numbers of boroughs per class.
 
 ![](SNOW/London_quantiles.png) 
 
@@ -78,7 +101,7 @@ To easily return to this area of interest, one can create a spatial bookmark: **
 
 Zoom back out to the density map; and make sure the 'study area' sqaure frame is visible, then test **Map** > Bookmarks > Soho to return.
 
-*Now one can have a discussion about areas of high historic and current population density in central London.  One could even show this population density in 3D, as in Chapter 2*.  
+*The cholera outbreak happended in one of the densest parts of historic London.  This map encourages a discussion about areas of high historic and current population density in central London.  It would be interesting to show this population density in 3D, as in Chapter 2*.  
 
 **Save.**
 *(Turn off the 'London Boroughs' layer)*
