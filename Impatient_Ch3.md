@@ -46,12 +46,9 @@ The restaurants and cafes seem to be more connected to the road pattern than the
 ![](SHOTS3/AllPubCafe.png)
 
 Rather than extracting data according to its attributes it can be extracted according to its location. 
+
 *How many cafes and restuarants are within 0.5 km of the tram line?*
 
-![](withTramkm.png)
-
-
-In the center of the city is the most touristy neighborhood of 'Old Town.  
 
 ## 3.2 Symbology: Heat Map & dot density
 
@@ -60,15 +57,15 @@ Clearly cafes and restaurants are not well distributed. Messing around with the 
 **Appearance** > Symbology > Primary Symbology > Heat Map
 This symbology reveals the density of points in a dataset. 
 
-![](HeatMap.png)
+![](SHOTS3/HeatMap.png)
 
 This allows one to see that the center of the city is the most densly provided with eaterys. 
 
-![](EdinHeatMap.png)
+![](SHOTS3/EdinHeatMap.png)
 
 Changing the symbology of the neighborhood layer allows one to see clearly that there are active zones which could use a community cafe!
 
-![](DotDensity.png)
+![](SHOTS3/DotDensity.png)
 
 ## 3.3 Statistics
 
@@ -81,20 +78,20 @@ ie- the tool **Feature Class to Feature Class** (when data was exported to the g
 
 Some of the most common tools appear as icons in the Analysis ribbon. But most tools are in the toolbox. 
 
-![](findTools.png)
+![](SHOTS3/findTools.png)
 
 The next chapter will jump into various different kinds of **Spatial Tools**.  Statistics are **Analysis tools**
 
-![](toolbox.png)
+![](SHOTS3/toolbox.png)
 
 **Analysis** > Tools > **Summarize Within** > 
 
-![](Summarize.png)
+![](SHOTS3/Summarize.png)
 
 The new CafeBar)neighborhoods layer, (which has been saved in the geodatabase) can now be symbolised as a polygon layer, to show those neighborhoods that have more, and fewer, cafes.
 
 And this new data can be shown in relation to the tram line, to build on a discussion of development of that line. 
-![](tramCafe.png)
+![](SHOTS3/tramCafe.png)
 
 
 
