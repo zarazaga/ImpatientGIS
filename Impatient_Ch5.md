@@ -122,12 +122,8 @@ While the change is slight in this relatively small distribution of points, ther
 
 ![](SNOW/weightedmean.png)
 
-## 5.9. Cased Spatial Mean 
-Run the Weighted Spatial Mean again, this time setting the **Case Field** option to the "**Label**" field and observe the results. This has the effect of "casing" the spatial mean, based upon the spatial allocation of the addresses to the pumps.
 
-![](SNOW/casedmeans.png)
-
-## 5.10 Standard Distance
+## 5.9 Standard Distance
 
 The **Standard Distance** is the spatial statistics equivalent of the standard deviation. It describes the radius around the spatial mean (or weighted spatial mean), which contains 68% of locations in a dataset. It can be very useful for working with GPS data.
 
@@ -139,7 +135,12 @@ Input Feature Class: **Deaths_Allocated** ;
 
 ![](SNOW/oddsd.png)
 
-## 4.11 Creating a Raster Surface from Point Data: Hotspots
+#### Bonus:  
+Run the **Standard Distance** again, this time without a **Weight** field and observe the results. This calculates Standard Distance based upon the **LOCATIONS**. What effect has that had on the Standard Distance? Why?
+
+![](SNOW/sdnoweight.png)*
+
+## 4.10 Creating a Raster Surface from Point Data: Hotspots
 ## a. Symbology: Hot Spots
 
 Hotspot mapping is a popular technique for quickly identifying spatial structures in data. You have the software "interpolate" or guess the values of the entire study area, based upon the discrete samples of each pump that our **Deaths_Allocated** points represent. 
@@ -191,7 +192,4 @@ Run the **Standard Distance** geoprocessing tool again, with the new Input Featu
 
 ![](SNOW/standarddistance.png)
 
-#### Bonus:  
-Run the **Standard Distance** again, this time without a **Weight** field and observe the results. This calculates Standard Distance based upon the **LOCATIONS**. What effect has that had on the Standard Distance? Why?
 
-![](SNOW/sdnoweight.png)*
