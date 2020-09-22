@@ -1,32 +1,32 @@
 # ImpatientGIS
 
 ## Chapter 4
-# Get started: Georeference and Geoprocessing.
+# Create data: Data tables, Georeferencing and XY table
 
 *based on workshop by Stacey Maples, Geospatial Manager, stacemaples@stanford.edu Stanford Geospatial Center*
 
  The history of modern epidemiology is tied up with the history of mapping. 
 
-https://www.youtube.com/watch?v=VJ86D_DtyWg
+[John Snow and Cholera Mapping History Video](https://www.youtube.com/watch?v=VJ86D_DtyWg)
+  --   [(or an  alternative video)](https://www.history.com/topics/19th-century/mankind-the-story-of-all-of-us-videos-cholera-video)
 
-https://www.history.com/topics/19th-century/mankind-the-story-of-all-of-us-videos-cholera-video
 
-## 4.1 Work with data
-
-Download the zip folder:  https://github.com/zarazaga/ImpatientGIS/tree/master/Ch4data 
+**Download** the zip folder:  https://github.com/zarazaga/ImpatientGIS/tree/master/Ch4data 
 Right-click the *.zip and Extract All.  
 
 * **snow_map.png** - a non-georeferenced image of the map from John Snow’s original report on the cholera outbreak of 1854.
 
-* **deathAddresses.csv**  - a table of addresses affected by the cholera outbreak, their latitude and longitude coordinates, and the number of deaths at each address.  
-
-* **London.shp** - the boroughs of the modern city of London.
+* **London_boroughs.shp** - the boroughs of the modern city of London.
+**2018Lon_HousingBoro.csv** - table with housing and pop. density
 
 * **Study_Area.shp** - a rectangle describing the area of interest.  
 
+* **deathAddresses.csv**  - a table of addresses affected by the cholera outbreak, their latitude and longitude coordinates, and the number of deaths at each address.  
+
 *backup data folder contains versions of files created during the workshop.* 
 
-## John Snow's 'snow_map’
+## 4.0 Look at John Snow's 'snow_map’ 
+(open from within the Ch4 data folder)
 ![](/SNOW/SnowMap.png)
 
 This is the famous map drawn by Dr John Snow, the founding father of modern epidemiology.  London suffered a series of cholera outbreaks during the mid-19th century, and Snow theorized that cholera was spread through contaminated water, rather than the prevailing theory of spread through "miasma" in the air.  London's water supply system consisted of shallow public wells where people pumped water to carry home; the sewage system of privies emptied into cesspools or cellars. The pervasive stench made the miasma theory very plausible. 
@@ -35,7 +35,7 @@ During the 1854 cholera outbreak Snow mapped the 13 public wells and all the kno
 
 Explore the cholera outbreak of 1854 and re-determine whether there is evidence that the Broad Street pump is the source of the outbreak. Map the locations and numbers of the cholera deaths, and geospatially compare them to the nearest water pumps.
 
-### 4.2 Join a Table: Illustrate London's population density
+## 4.1 Join a data Table: Illustrate London's population density
 
 Open a new ArcGIS Pro document and **Insert** > New Map.
 
@@ -72,7 +72,7 @@ Output Feature Class: **London** > Run.
 
 ![](export.png)
 
-*(the backup data folder contains a joined London shapefile- just in case)*
+*(ps. the 'backup data' folder contains a joined 'London' shapefile- just in case!)*
 
 Change the symbology of the London layer to show relative population density. 
 
@@ -86,7 +86,7 @@ Lable the Boroughs: **Feature Layer** > *Labeling* > ‘Label’> default Field 
 
 *(For clarity one could turn off this layer while working on the new layer)*
 
-### 4.3 Compare Historic area of disease to today's population density. 
+## 4.2 Compare Historic area of disease to today's population density. 
 
 The 'Study Area' polygon describes the zone of John Snow's study. Compare its location to the areas of density in modern London.
 
@@ -95,7 +95,7 @@ Catalog > drag **Study_Area.shp** onto the Map. Zoom into the small square *(or 
 
 ![](SNOW/add_layer.png)
 
-#### Spatial Bookmarks
+### Spatial Bookmarks
 
 To easily return to this area of interest, one can create a spatial bookmark: **Map** > Bookmarks  > New Bookmark > Name it **“SOHO”**. 
 
@@ -106,50 +106,9 @@ Zoom back out to the density map; and make sure the 'study area' sqaure frame is
 **Save.**
 *(Turn off the 'London Boroughs' layer)*
 
-### 4.4 Create a new Data layer from an XY table
 
-The dataset in the folder which describes the locations where deaths from Cholera happened, is a table, not a spatial data set.  Open it. Each line in the table is an address, with the number of cases at the adress, the address writen as text, and the latitude and longitude coordinates of these addresses.  
-*Notice how small the longitude number is- why?*
 
-Catalogue > drag  ‘deathAddresses.csv file onto the contents window.
-
- **Map** Tab > Add Data >  **Add XY Point Data**. This will open the *‘Geoprocessing’* tools window, with the tool: **XY Table to Point**.  *(Also find under Analysis > Tools > search for ‘XY’)*. 
-
-![](SNOW/XYpointdata.png)
-
-Under **Output Feature Class**, note that the new feature class will be exported to the ‘globaldatabase (gdb) as the default location for all new data.  
-Replace the default name with "**Deaths**" and remaining settings as shown: *(make sure the coordinate system is GCS_WGS_1984)*
-
-![](SNOW/XYtopoints.png)
-
-**Run**. Points are added to the **Map** and the new layer to **Contents**.
-
-![](SNOW/deathsadded.png)
-
-### 4.5 Statistics on a field  
-
-Obtain a simple statistical snapshot of the number of deaths at each address from the data in the Attribute Table. *(Make sure the layer is selected).* 
-
-Open the Attribute table: **Feature Layer** > Data > Attribute Table  *(Shortcut:right-click)*
- **Num_Cases** shows the number of deaths at each address. Right-click on the header of **Num_Cases** and select **Statistics**.  A histogram of the data distribution will appear over the top of the Attribute Table, and a "Distribution of Num_Cases" panel will appear in the tabbed panel area on the right. 
-
-![](SNOW/Statistics.png)   
-
-### 4.6 Show more deaths with Proportional symbols 
-
-The dots are all alike. Change the symbology to show, with the size of the circle, the different numbers of people who died at each address.  
- **Appearance** > Symbology *(Or right-click)* Change 'Single Symbol' to **Proportional Symbols** and set Field = Num_Cases.  
- In the **Histogram** the range of values for the Num_Cases was 1-18. So set Minimum size = 1.00 and Maximum size = 18.  On the Template for **symbol** select a larger circle- say Circle 3 at (40%). 
-
-![](SNOW/proportional.png)
-
-#### Set a reference scale for Zooming
-
-The circle symbology remains the same size as one Zooms in and out of the Map, regardless of the viewing scale.  To keep it proportional change the properties of the WHOLE map-frame. 
-Right-click on **Map** at the top of the **Contents** > Properties >  **General** > change the **Reference scale**  to 1:5000 > OK .
-Symbols now change size along with the zooming of the map. 
-
-### 4.5 Create new Data: Georeference a paper map  
+## 4.3 Create new Data: Georeference a paper map  
 
 To determine whether there is evidence that the Broad Street pump was the source of the cholera outbreak of 1854, one needs to know which deaths took place near which water-pumps. Each death address must be allocated to a pump according to its proximity to that pump.  
 First we need the locations of the historic pumps, data which must be extracted from John Snow's original 1854 cholera outbreak map, by ovelaying the paper map onto the correct site within our GIS, and tracing the points off it. 
@@ -159,7 +118,7 @@ Catalogue > data folder > drag **snow_map.png** into the **Map**.
 ![](SNOW/pyramids.png)
 Where is it? Added to **Contents**, the layer isn't visible in the Map. Right-click > zoom to layer.  It is probably in the ocean! The GIS has no reference to identify where this map should be located in the world. 
 
-#### Georeference
+### Georeference
 
 Select *snow_map.png* >  **Imagery** tab > Georeference icon, to open the **Georeferencing** Tool bar > Georeference.
 
@@ -186,7 +145,7 @@ The **Georeference** tools operate within an external editing session; one needs
 *Observation: In Windows Explorer, browse to the **data** folder; note that new files have been added including **snow_map.png.pgwx**. This is the "World File" for the image just georeferenced; as long as this file accompanies the **snow_map.png** file, all GIS applications, such as Google Earth, ArcGIS, QGIS, etc.. should be able to co-locate this image with other datasets.*
 ![](SNOW/worldfile.png)
  
-### 4.6 Create new Data: Digitize features from a georeferenced map
+## 4.4 Create new Data: Digitize features from a georeferenced map
 
 *(If the last section didn't go well, add the `John_Snow_Map.tif` from the backup_data )* 
 
@@ -226,7 +185,7 @@ Close the Water Pumps Attribute Table.
 Turn off the visibility of the snow_map layer, and zoom to the Water Pumps. 
 ![](SNOW/pumpswithlabels.png)  
 
-## 4.7 Finding and Using an already georeferenced map online
+## 4.5 Finding and Using an already georeferenced map online
 
 There are many venues for searching for old maps as sources for spatial data. It is possible to scan and georeference almost any map you can find reference data (another map to georeference to) for, bearing in mind considerations of scale, authority, projections, etc.when using a scanned map as a data source.
 
@@ -257,193 +216,45 @@ Insert the map into ArcGIS Pro. **Insert** tab > Project group> **Connections** 
 The **Add WMTS Server Connection** dialog box appears. Paste the URL of the WTMS server site.
 In the catalog paine, the maps.georeferencer appears under the folder **Servers**. Expland the down arrow, and drag the map "Gerend von London' onto the **Map** page. It will take a while to load. 
 
-## 4.8 Spatial Data Analysis: Geoprocessing Tools
+## 4.6 Create a new Data layer from an XY table
 
-The Analysis tools gallery gives access to a  subset of the most powerful and commonly used spatial analysis tools. Analysis > Tools gallery. A few common tools appear as icons in the **tools** box but the full set of tools is under >  **Tools** > opening the **Geoprocessing** panel > clicking on **Toolboxes** to see ALL the tools. 
+The dataset in the folder which describes the locations where deaths from Cholera happened, is a table, not a spatial data set.  Open it. Each line in the table is an address, with the number of cases at the adress, the address writen as text, and the latitude and longitude coordinates of these addresses.  
+*Notice how small the longitude number is- why?*
 
-### 1. Buffer
-First demonstrate how many deaths occured near each pump with a simple analysis. Is it's useful to know how many died within a 100 meter buffer around each pump?
+Catalogue > drag  ‘deathAddresses.csv file onto the contents window.
 
-![](SNOW/bufferbutton.png)
+ **Map** Tab > Add Data >  **Add XY Point Data**. This will open the *‘Geoprocessing’* tools window, with the tool: **XY Table to Point**.  *(Also find under Analysis > Tools > search for ‘XY’)*. 
 
-**Analysis** > Tools > **Buffer** (geoprocessing panel opens).
+![](SNOW/XYpointdata.png)
 
-Input: **pumps**; 
-Output: pumps_Buffer (this is default); 
-Distance : **100  Meters**.  > **Run**.
+Under **Output Feature Class**, note that the new feature class will be exported to the ‘globaldatabase (gdb) as the default location for all new data.  
+Replace the default name with "**Deaths**" and remaining settings as shown: *(make sure the coordinate system is GCS_WGS_1984)*
 
-![](SNOW/buffer.png)
+![](SNOW/XYtopoints.png)
 
-Some buffers contain many deaths, and others contain fewer. (It isn't very clear, visually, which pump is primary). Count the number of cases within each buffer.   
+**Run**. Points are added to the **Map** and the new layer to **Contents**.
 
-### 2. Summarize within 
-*How many homes with deaths are within each polygon?*
-**Analysis** > Tools > Geoprocessing Panel > Find Tools- Search Box> search for **“summarize” > summarize within**.
+![](SNOW/deathsadded.png)
 
-Input: **pumps_buffer**, and add the features from the **deaths** layer.  
-Summary Fields: **Num_cases: Sum** (to add all cases within each buffer) > **Run**.
+## 4.7 Statistics on an Attribute field  
 
-![](SNOW/summarizeWithin.png)
+Obtain a simple statistical snapshot of the number of deaths at each address from the data in the Attribute Table. *(Make sure the layer is selected).* 
 
-Open the Attribute table.
-Each buffer ring has a different number of cases.
+Open the Attribute table: **Feature Layer** > Data > Attribute Table  *(Shortcut:right-click)*
+ **Num_Cases** shows the number of deaths at each address. Right-click on the header of **Num_Cases** and select **Statistics**.  A histogram of the data distribution will appear over the top of the Attribute Table, and a "Distribution of Num_Cases" panel will appear in the tabbed panel area on the right. 
 
-![](SNOW/bufferAttribute.png)
+![](SNOW/Statistics.png)   
 
-Illustrate the difference in quantity within each buffer by color: in **symbology** use Graduated colors, Field: Sum Num_Cases.   
-Try different **Classification** methods to test what this reveals about the data. 
+## 4.8 Proportional symbols: Show relative quantities
 
-![](SNOW/buffer_rings.png)
+The dots are all alike. Change the symbology to show, with the size of the circle, the different numbers of people who died at each address.  
+ **Appearance** > Symbology *(Or right-click)* Change 'Single Symbol' to **Proportional Symbols** and set Field = Num_Cases.  
+ In the **Histogram** the range of values for the Num_Cases was 1-18. So set Minimum size = 1.00 and Maximum size = 18.  On the Template for **symbol** select a larger circle- say Circle 3 at (40%). 
 
-After all, this wasn’t very useful representation. Buffers are not useful here, because there are many points outside the buffers. *Where did those people get their water?  Which is their closest pump.*  Test another tool.
+![](SNOW/proportional.png)
 
-### 3. Voronoi (Thiessen) polygon (Spatial Allocation)
+### Set a reference scale for Zooming
 
-Thiessen polygons allocate all the space in an area of interest, focused around a single feature per polygon. That is, within a Thiessen polygon, all locations are closer to the point that was used to generate that polygon than to any other point in the set. Create a set of Thiessen polygons based upon the locations of the **Water Pumps**. Then allocate all of the points in the death addresses dataset to the polygon around the nearest water pump, using a simple spatial join.
-
- **Analysis tab** > Tools > Geoprocessing panel> Find Tools> search for **Voronoi** > **Create Thiessen Polygons** tool.
-
-Options as: Input Features:**Water Pumps**; Output Feature Class: **Voronoi**; Output Fields: **All fields**. 
-
-![](SNOW/voronoitool.png)
-
-To ensure the whole map area is included, beyond jsut the limits of the pump-points, manually set the **Extent** of the spatial calculation to the limits of the 'study area' box.  **Analysis** > Environments > set Extent: **Same as:Study_Area**; > Run.  
-
-The result creates a layer of irregular polygons generated around each water pump.   Open the Attribute table of the new Voronoi layer. It contains the fields from the **Water Pumps**, including the **Label** field.  Make the lables visible: **Feature Layer** > Labeling Tab > Label (field is Label).
-
-![](SNOW/voronoi.png) 
-
-
-### 4. Summarize within (again)
-
-Try using **Summarize within** for the Voronoi polygon layer, to see how many homes are within each polygon.
-**Analysis** > Tools > Geoprocessing Panel > **summarize within**.
-Input: **Voronoi**, and features from the **deaths** layer; 
-Summary Fields: **Num_cases: Sum** (add all the cases within each polygon)  > Run.
-
-Open the **Attribute Table**.  Note the total cases connected to each pump: clearly the Broad street pump is culpable.  
-
-### 5. Spatial Join (Point Aggregation)
-For each individual death, the original table shows only the address; it would be statistically useful to define which pump is attributed (or closest) to that address.  To “allocate” a specific pump, determine, for each adress. whichVoronoi polygon it falls within.  A **Spatial Join** can add the polygon’s attribute (pump name) to each **death address** point. 
-
-**Analysis** > Tools > Spatial Join > to open the **Spatial Join** Geoprocessing tool. 
-(*shortcut: right-click on deaths layer> Joins and Relates>Spatial Join.)* 
- Join Features: **Voronoi**; Output Feature Class: **Deaths_Allocated**. 
-
-![](SNOW/spatialjoin.png)  
-
-The new layer **Deaths_Allocated** is added to the **Contents**. 
-Open the **Attribute Table**. Each record has the "Label" for the the nearest Water Pump.
-
-### 5. Summary Statistics
-
-Statistically, summarize the deaths in the outbreak, grouping the summary by the Water Pumps allocated to each Death Address. The **Summary Statistics Tool** allows a statistical summary similar to the one performed on the entire data set, but this time grouped by pump.
-
-With **Deaths_Allocated** Attribute Table open > right-click on the header of **Num_Cases** column > Summarize > **Summary Statistics** Geoprocessing tool table.
-Set the Statistics Fields as shown:  
-![](SNOW/summarystats.png)  
-
-The **Case field** is set as **Label** column, which is the pump-name, in order to group the summary by nearest **Water Pump**. > Run.
-
-Right-click the resulting **Deaths_Allocated_Statistics** table to open it. Right-click on the **SUM_Num_Cases** field header and select **Sort Descending**  
-![](SNOW/summarystatsresult.png)  
-
-
-## 4.9 Basic Measures of Spatial Central Tendency
-
-### 1. Spatial Mean (Mean Center)
-
-The Mean Center is defined by the average x- and y-coordinate of all the features in the study area. It's useful for tracking changes in the distribution or for comparing the distributions of different types of features. Use the Mean Center to highlight the distribution of deaths around the Broad Street Pump.  
-
-First, calculate a simple spatial mean. This is simply the mean center of the **distribution of locations** 
-
- **Analysis** > Tools > Geoprocessing Panel > *Find Tools* Search Box,  **Mean Center** geoprocessing tool.
-Input Feature Class: **Deaths_Allocated** Output Feature Class: a meaningful name > **Run**.
-
-The new Layer added to the Map has a single feature: the *Spatial Mean* of the distribution of *addresses* at which deaths took place. That is, we have determined the *Spatial Mean of the effected addresses*, however it is not the Spatial Mean of all of the deaths in the neighborhood, since some addresses had many. 
-
-![](SNOW/spatialmean.png)
-
-### 2. Weighted Spatial Mean
-Use the Num_Cases field to calculate the *Spatial Mean* of all deaths in the outbreak, by calculating a **Weighted Spatial Mean**
-
-Run the **Mean Center tool** again, this time assigning the ***Weight Field*: Num_Cases**. Rename the Output Feature Class (add a "W" to the end of the filename).
-Change the color patch for the resulting layer to one that contrasts with that of the previous, unweighted Mean. 
-
-While the change is slight in this relatively small distribution of points, there is still a noticeable movement of the **Weighted Spatial Mean** towards the Broad Street Pump. 
-
-![](SNOW/weightedmean.png)
-
-#### 3. Cased Spatial Mean 
-Run the Weighted Spatial Mean again, this time setting the **Case Field** option to the "**Label**" field and observe the results. This has the effect of "casing" the spatial mean, based upon the spatial allocation of the addresses to the pumps.
-
-![](SNOW/casedmeans.png)
-
-### 4. Standard Distance
-
-The **Standard Distance** is the spatial statistics equivalent of the standard deviation. It describes the radius around the spatial mean (or weighted spatial mean), which contains 68% of locations in a dataset. It can be very useful for working with GPS data.
-
-**Analysis** > Tools > Geoprocessing Panel > *Find Tools* Search Box > 
-*(or short-cut: Geoprocessing Tab >Back Arrow)* 
-Standard Distance > **Standard Distance tool**
-Input Feature Class: **Deaths_Allocated** ; 
-**Output Standard Distance Feature Class**: add a "1" to the name. Confirm  'Circle Size': **1 standard deviation**; Weight Field: **Num_Cases** > Run.
-
-![](SNOW/oddsd.png)
-
-The resulting Standard Distance circle, is, stragely, not a circle. This is because we used unprojected data (using long.and lat. degrees) for the calculation.  Geoprocessing tools that measure distance and area have trouble with this- since area is in segments of degrees. At the bottom of the Geoprocessing panel note that *Standard Distance completed with warnings.* Hovering the mouse reveals more error information and a clickable link.  
-
-
-### 5. Define a new Geographic Projection, and Export data
-
-Translate the **Deaths_Allocated** dataset to a new projected version.Select a Coordinate System that is *Projected* (flattened), instead of *Geographic* (curved on the earth's surface), in order for it to be appropriate for measuring distance and area in meters at the scale of our project. **Export** the existing dataset to create a new layer with the new projection.  Choose a UTM (Universal Transverse Mercator) projection defined for this longitude, 30 North. 
-
-Select the layer.  **Feature Layer** > Data Tab > **Export Features** *(or right-click>Deaths_Allocated layer > Data>Export Features)* 
-Output Feature Class: **Deaths_Allocated_UTM** 
-
-Click on the word **Environment**, at the top of the Geoprocessing Panel> Click on the **Globe icon** at the right of the drop-down > expand the Layers section. (The shows the multiple different projections of different layers in your map, and other available options) > Select **WGS 1984 UTM Zone 30N** projection > click **OK** > RUN. 
-
-![](SNOW/Globe30N.png)
-
-Run the **Standard Distance** geoprocessing tool again, with the new Input Feature Class: **Deaths_Allocated_UTM**.  The result should now be a circle, whose diameter encompasses 68% of the **Deaths** in the dataset.
-
-![](SNOW/standarddistance.png)
-
-#### Bonus:  
-Run the **Standard Distance** again, this time without a **Weight** field and observe the results. This calculates Standard Distance based upon the **LOCATIONS**. What effect has that had on the Standard Distance? Why?
-
-![](SNOW/sdnoweight.png)
-
-
-## 4.10 Creating a Raster Surface from Point Data: Hotspots
-
-Hotspot mapping is a popular technique for quickly identifying spatial structures in data. You have the software "interpolate" or guess the values of the entire study area, based upon the discrete samples of each pump that our **Deaths_Allocated** points represent. 
-
-#### 1. Symbology: Hot Spots
-ArcGIS Pro has a default hotspot tool under symbology. Turn off all but  **Water Pumps** and **Deaths_Allocated_UTM** point layers, and Visualise the layer **Deaths_Allocated_UTM** as a hotspot.
-
-#### 2. Kernel Density
-
-The Kernel Density Tool calculates a magnitude per unit area from the point features using a kernel function to fit a smoothly tapered surface to each point. The result is a raster dataset which can reveal “hotspots” in the array of point data, and which can be weighted by a population field within the point data.
-
-Turn off all but the **Water Pumps** layer.
-**Analysis** > Tools > Geoprocessing Panel > Search for **Kernel Density** 
-Use the following settings:
-
-|              Setting: | Value                  |
-|----------------------:|------------------------|
-| Input point features: | Deaths\_Allocated\_UTM |
-|     Population field: | Num_Cases              |
-|        Output raster: | DeathTopo              |
-|     Output cell size: | 1                      |
-|        Search radius: | 50                     |
-|           Area units: | Square kilometers      |
-|   Output cell values: | Densities              |
-|               Method: | PLANAR                 |  
-
-The "Hottest" spot on the resulting map lies directly beneath the **Broad Street Pump**
-
-![](SNOW/deathtopo.png)
- 
-
-
+The circle symbology remains the same size as one Zooms in and out of the Map, regardless of the viewing scale.  To keep it proportional change the properties of the WHOLE map-frame. 
+Right-click on **Map** at the top of the **Contents** > Properties >  **General** > change the **Reference scale**  to 1:5000 > OK .
+Symbols now change size along with the zooming of the map. 
