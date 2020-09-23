@@ -173,8 +173,8 @@ Select the **Water Pumps** layer > **Edit** Tab > activate the **Edit** tools ri
 
 Click on **Create** tool > a set of templates for each vector data layer appear in a  **Create Features** panel on the right.
 ![](SNOW/createbutton.png)  
-From the **Water Pumps** template select the Water Pump point.   Locate a Water Pump in the **snow_map.png** image, and click on it to place the point. 
-In the Attribute Table, double-click on the new record under the **Label** field and enter a text-name for the Label field (use the name of the nearest street), then hit RETURN.
+From the **Water Pumps** template select the Water Pump point.   Locate a Water Pump in the **snow_map.png** image, and click on it to place the point. Tick the 'check mark' in the floating tool-bar.
+In the Attribute Table, double-click on the new record under the **Label** field and enter a text-name for the Label field (use the name of the nearest street), then, to approve that name, be sure to hit RETURN.
 
 Repeat for the remaining 12 water pumps in the Snow Map. (There are 13 pumps in all; some are right near the edge.) 
 
