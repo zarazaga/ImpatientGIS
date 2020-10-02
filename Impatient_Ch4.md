@@ -11,7 +11,7 @@
   --   [(or an  alternative video)](https://www.history.com/topics/19th-century/mankind-the-story-of-all-of-us-videos-cholera-video)
 
 
-**Download** the zip folder:  https://github.com/zarazaga/ImpatientGIS/tree/master/Ch4data 
+**Download** the zip folder:  https://github.com/zarazaga/ImpatientGIS/blob/master/Ch4data.zip
 Right-click the *.zip and Extract All.  
 
 * **snow_map.png** - a non-georeferenced image of the map from John Snow’s original report on the cholera outbreak of 1854.
