@@ -146,6 +146,8 @@ The **Georeference** tools operate within an external editing session; one needs
 
 *Observation: In Windows Explorer, browse to the **data** folder; note that new files have been added including **snow_map.png.pgwx**. This is the "World File" for the image just georeferenced; as long as this file accompanies the **snow_map.png** file, all GIS applications, such as Google Earth, ArcGIS, QGIS, etc.. should be able to co-locate this image with other datasets.*
 ![](SNOW/worldfile.png)
+
+Be sure to **Close Georeference** on the top ribbon, to finish the editing session. 
  
 ## 4.4 Create new Data: Digitize features from a georeferenced map
 
