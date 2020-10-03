@@ -22,13 +22,14 @@ Distance : **100  Meters**.  > **Run**.
 
 ![](SNOW/buffer.png)
 
-Some buffers contain many deaths, and others contain fewer. (It isn't very clear, visually, which pump is primary). Count the number of cases within each buffer.   
+Some buffers contain many deaths, and others contain fewer. (It isn't very clear, visually, which pump is primary). 
 
 ## 5.2 Summarize within 
-*How many homes with deaths are within each polygon?*
+*How many deaths took place within each polygon?*
 **Analysis** > Tools > Geoprocessing Panel > Find Tools- Search Box> search for **“summarize” > summarize within**.
 
 Input: **pumps_buffer**, and add the features from the **deaths** layer.  
+At some of the addresses many people died. order to find out not just how many points (homes) but the total number of cases, create a new *Summary Field* 
 Summary Fields: **Num_cases: Sum** (to add all cases within each buffer) > **Run**.
 
 ![](SNOW/summarizeWithin.png)
@@ -55,7 +56,7 @@ Options as: Input Features:**Water Pumps**; Output Feature Class: **Voronoi**; O
 
 ![](SNOW/voronoitool.png)
 
-To ensure the whole map area is included, beyond jsut the limits of the pump-points, manually set the **Extent** of the spatial calculation to the limits of the 'study area' box.  **Analysis** > Environments > set Extent: **Same as:Study_Area**; > Run.  
+The resulting calculation is limited by the edges of the pump-points. To ensure the whole map area is included, beyond the pump-point limits, manually set the **Extent** of the spatial calculation to the limits of the 'study area' box.  **Analysis** > Environments > set Extent: **Same as:Study_Area**; > now **Run**.  (or Run again!)
 
 The result creates a layer of irregular polygons generated around each water pump.   Open the Attribute table of the new Voronoi layer. It contains the fields from the **Water Pumps**, including the **Label** field.  Make the lables visible: **Feature Layer** > Labeling Tab > Label (field is Label).
 
@@ -133,19 +134,40 @@ Standard Distance > **Standard Distance tool**
 Input Feature Class: **Deaths_Allocated** ; 
 **Output Standard Distance Feature Class**: add a "1" to the name. Confirm  'Circle Size': **1 standard deviation**; Weight Field: **Num_Cases** > Run.
 
-![](SNOW/oddsd.png)
+## 5.10 Repair a Co-ordinate System Error: Export data & define a new Projection
+
+![](SNOW/error.png)
+
+Many times in GIS, the error has to do with projection systems. It is the most error-heavy aspect of working with maps- the difficulty of stretching information about a spherical world onto a flat paper surface. 
+
+Check the co-ordinate systmes of the Map- (right click *Map* in the **Contents** window > Map Properties > Coordinate System.  The Map has the system 'British National Grid', clearly this is a Projected (gridded) system, and is the map system due to the fact that the first data loaded was the London boroughs dataset. 
+Why, then, is there an error?  Open the *porperties* table for the Deaths_Allocted layer. 
+Deaths_Allocted layer> Right_click > Properties> Source > Spatial Reference >  this layer has a 'geographic coordinate system GCS WGS 1984). 
+
+![](SNOW/coordinate.png)
+
+Why? It is easy to forget the steps one has taken.  The XY-table was brought into the map using lat-long to identify the locations. Therefore is is logical that this layer MUST have used geographic coordinates, to find the point locations on the surface of the earth. 
+
+Export the layer **Deaths_Allocated** to create a new layer which is re-projected onto the system of the map. 
+**Feature Layer** > Data > Export (or right-click)
+On the top line to the right of 'Parameters'- select '**Environments**' to change the options. 
+
+![](SNOW/environ.png)
+Change the coordinate system to be the same as 'London', (Make sure it shows as 'Output System: British National Grid) 
+Name the new output layer 'Deaths_Allocated_BNG
+
+Now:  Run the  **Standard Distance** tool again as above, but this time using the new deaths_allocated_BNG projected dataset instead. 
+
+![](SNOW/standard.png)
 
 #### Bonus:  
 Run the **Standard Distance** again, this time without a **Weight** field and observe the results. This calculates Standard Distance based upon the **LOCATIONS**. What effect has that had on the Standard Distance? Why?
-
-![](SNOW/sdnoweight.png)*
-
 ## 4.10 Creating a Raster Surface from Point Data: Hotspots
 ## a. Symbology: Hot Spots
 
 Hotspot mapping is a popular technique for quickly identifying spatial structures in data. You have the software "interpolate" or guess the values of the entire study area, based upon the discrete samples of each pump that our **Deaths_Allocated** points represent. 
 
-ArcGIS Pro has a default hotspot tool under symbology. Turn off all but  **Water Pumps** and **Deaths_Allocated_UTM** point layers, and Visualise the layer **Deaths_Allocated_UTM** as a hotspot.
+ArcGIS Pro has a default hotspot tool under symbology. Turn off all but  **Water Pumps** and **Deaths_Allocated_BNG** point layers, and Visualise the layer **Deaths_Allocated_BNG** as a hotspot.
 
 ## b. Kernel Density
 
@@ -157,7 +179,7 @@ Use the following settings:
 
 |              Setting: | Value                  |
 |----------------------:|------------------------|
-| Input point features: | Deaths\_Allocated\_UTM |
+| Input point features: | Deaths\_Allocated\_BNG |
 |     Population field: | Num_Cases              |
 |        Output raster: | DeathTopo              |
 |     Output cell size: | 1                      |
@@ -170,26 +192,4 @@ The "Hottest" spot on the resulting map lies directly beneath the **Broad Street
 
 ![](SNOW/deathtopo.png)
  
-
-
-END CHAPTER HERE
-
-
-*CHECK THIS_ THIS MAY NO LONGER BE THE CASE WITH BRITISH GRID..The resulting Standard Distance circle, is, stragely, not a circle. This is because we used unprojected data (using long.and lat. degrees) for the calculation.  Geoprocessing tools that measure distance and area have trouble with this- since area is in segments of degrees. At the bottom of the Geoprocessing panel note that Standard Distance completed with warnings. Hovering the mouse reveals more error information and a clickable link.*  
-
-### 5. Define a new Geographic Projection, and Export data
-
-*Translate the **Deaths_Allocated** dataset to a new projected version.Select a Coordinate System that is *Projected* (flattened), instead of *Geographic* (curved on the earth's surface), in order for it to be appropriate for measuring distance and area in meters at the scale of our project. **Export** the existing dataset to create a new layer with the new projection.  Choose a UTM (Universal Transverse Mercator) projection defined for this longitude, 30 North.* 
-
-Select the layer.  **Feature Layer** > Data Tab > **Export Features** *(or right-click>Deaths_Allocated layer > Data>Export Features)* 
-Output Feature Class: **Deaths_Allocated_UTM** 
-
-Click on the word **Environment**, at the top of the Geoprocessing Panel> Click on the **Globe icon** at the right of the drop-down > expand the Layers section. (The shows the multiple different projections of different layers in your map, and other available options) > Select **WGS 1984 UTM Zone 30N** projection > click **OK** > RUN.**
-
-![](SNOW/Globe30N.png)
-
-Run the **Standard Distance** geoprocessing tool again, with the new Input Feature Class: **Deaths_Allocated_UTM**.  The result should now be a circle, whose diameter encompasses 68% of the **Deaths** in the dataset.
-
-![](SNOW/standarddistance.png)
-
-
+Continue with Chapter 6.

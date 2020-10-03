@@ -264,3 +264,5 @@ This URL provides access to the georeferenced map beyond the DavidRumsey.com web
 Insert the map into ArcGIS Pro. **Insert** tab > Project group> **Connections** drop-down list > New WMTS Server. 
 The **Add WMTS Server Connection** dialog box appears. Paste the URL of the WTMS server site.
 In the catalog paine, the maps.georeferencer appears under the folder **Servers**. Expland the down arrow, and drag the map "Gerend von London' onto the **Map** page. It will take a while to load. 
+
+[Continue to Chapter 5](https://github.com/zarazaga/ImpatientGIS/blob/master/Impatient_Ch5.md)
