@@ -77,7 +77,7 @@ Download more data:
 
 *'Natural Neighbourhoods'* is a useful polygon dataset of the way people name their neighborhoods with an attribute called "SUM_ELECTNO' of the numbers of voters. 
 
-
+*(Its is important to learn how to find, and download your own data.  But if you run into difficulties, here is  backup data: Download the zip folder: https://github.com/zarazaga/ImpatientGIS/blob/master/EdinburghData.zip Right-click the *.zip and Extract All.
 
 ## 1.4 Add vector data to a Map
 
