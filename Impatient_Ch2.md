@@ -39,7 +39,7 @@ Visual communication requires careful observation of the relationships between c
 
 **SAVE** the map for future analysis.
 
-Rather than normalising the data, by dividing by are on the fly, make a new field that will serve as the count of 'density' of neighborhood participation. 
+Rather than normalising the data, by dividing by area on the fly, make a new field that will serve as the count of the 'density' of neighborhood participation. 
 
 ## 3.1 Working with Fields
 
@@ -47,11 +47,11 @@ In the attribute table, Add a field
 
 ![](SHOTS2/addField.png)
 
-Make a space for a 'float' type for a calculation of activist density. 
+Make a space for a 'float' type, for a calculation of activist density. 
 
 ![](SHOTS2/FieldDensity.png)
 
-At the top of the window/ ribbon is a new 'save' button for this Field editing session. **Save** the modificatinos to the table.
+At the top of the window/ ribbon is a new 'save' button for this Field editing session. **Save** the modifications to the table.
 
 In the Attribute table, Right-Click on the field to **Calculate Field**
 ![](SHOTS2/calculate.png)
@@ -60,12 +60,12 @@ Double-clicking a field name brings that field into the calculation.  Multiply t
 
 ![](SHOTS2/AcDensity.png) 
 
-Run the calculation. Then check the new field. Right-click on the column and **Sort Descending** to check that the field has populated with data. Note that there are many neighborhoods with '0'in this column. 
+Run the calculation. Then check the new field. Right-click on the column and **Sort Descending** to check that the field has populated with data. Note that there are many neighborhoods with '0'in this column. *Why?*
 
 ## 3.2 Visualise that data in 3d
 *Where are the most densely active neighborhoods in the city?*
 
-To get the data into 3-d first check our coordinate system - are projecting to a curved surface or a flat surface?
+To get the data into 3-d, first check the coordinate system - Is the map projecting to a curved surface or a flat surface?
 
 On the Anlysis Tab > Environments >
 
@@ -73,7 +73,7 @@ On the Anlysis Tab > Environments >
 
 The British National Grid is like a flattened grad set across the UK. So we will make a local 'scene'.
 
-*The choice between local and global depends on the projection type - how the world is seen on the screen. This specific data came using a 'flattened' projection, like a folded city-map, rather than the geographical system like a classroom globe.*
+*The choice between local and global depends on the projection type - or on how the physical world is visualised on a flat screen. This specific data came using a 'flattened' projection, like a folded city-map from which distances can be measured, rather than the 'geographical' system which is curved like a classroom globe.*
 
 View > Convert > to Local Scene
 
