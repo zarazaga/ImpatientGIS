@@ -19,31 +19,33 @@ Turn off the other layers, and the confusing lables.
 
 ![](SHOTS2/GraduatedColors2.png)
 
-Looking carefully at the map, we notice this drawing is not very useful. The biggest participant population shows to be in the largest areas of neighborhood- but actually we want to show proportionally how active participants in each neighborhood are, dependent on its area- ie. we'd rather show density of participatoin. Find an attribute that gives area.  
+Look carefully at the map. Neighborhoods have very different areas. And the color of the neighborhood depends on the total number of participants. The biggest participant population shows to be in the largest areas of neighborhood - this seems rather obvious and probably not very useful. Actually it would be more useful to show proportionally how active participants in each neighborhood are, dependent on its area. - ie. we'd rather show density of participation. To do that you need to find an attribute that gives area.  
 
-Normalize the total number by dividing by area **Normalization > Shapearea >
+Then normalize the total ELECTNO number by dividing that total by area **Normalization > Shapearea >.** 
+*'Normalizing' is a way to calculate this new data-attribute 'on the fly' in order to quickly reveal the data in a way that is useful.*
 
 **Classification Methods**
 
-Then test different **Classification Methods** to find one that gives a better spread of colors across the density range. The methods are clearly described in the drop-down. 
+The choice of classification methods tells the GIS how to divide the resulting range of outcomes into the 5 different color buckets.  Depending on your data and the story you want to tell, different methods work well in diffrent contexts.  Standard deviations are best for statistical models, quantile splits the data evenly, and manaul allows one to set the specific limits. (Each classification method is clearly described in the drop-down. ) Test each of the different **Classification Methods** to find one that gives the best spread of colors across the density range. 
 
 ![](SHOTS2/ClassificationMethods.png)
 
 ## 1.6 Map Design
 
-Visual communication requires careful observation of the relationships between color, scale and ideas: design the layer choices, colors, lables and Classification Method to best communicate the study issue.  Design it your way!
+Visual communication requires careful observation of the relationships between color, scale and ideas: design the layer choices, colors, lables and Classification Method to best communicate the study issue.  Think about the story that the map is trying to tell, and take control of the messaging. Dont let ESRI defaults be in charge. Design it your way!
 
-*Clearly some very active and dense neighborhoods seem to have few council polling sites!  Maybe Pilton could use a new site?*
+*Clearly some very active and dense neighborhoods seem to have few council polling sites!  Which neighborhoods could use a new site? Maybe Pilton? It might be worth doing additional research into the neighborhood as part of the study.*
 
 ![](SHOTS2/Pilton.png)
 
 **SAVE** the map for future analysis.
 
-Rather than normalising the data, by dividing by area on the fly, make a new field that will serve as the count of the 'density' of neighborhood participation. 
 
 ## 3.1 Working with Fields
 
-In the attribute table, Add a field
+A feature layer has a series of attributes. These are the columns on the table.  Normalising was a way to calculate density 'on the fly'. But what if one wanted to do additional work using this data set.  One might want to add a new field. Make a new field that gives the 'density' of neighborhood participation. 
+
+In the attribute table, **Add a field**
 
 ![](SHOTS2/addField.png)
 
