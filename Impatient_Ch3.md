@@ -16,10 +16,8 @@ Turn on the layer for Shops, and select a sub-set of the data that is ONLY the s
 
 ![](SHOTS3/2select.png)
 
-Shop-survey has an attribute called 'Descrip10' with use type. Right-click and 'Sort Ascending' to read through the list of names.  Its not a very tidy data-set. Note that there are sometimes several similar names for the same sort of use. Create two new layers by extracting coffeeshop/cafes, and pubs/bars. 
-There is another attribute called 'CLASS10'. The class type 3 appears to map nicely to the combination of cafes, bars and restaurants. In order to select- one could select from the attributes in DECRIP 10   (but it takes a long time since the data is messy)
-
-OR one could select by attributes in CLASS 10
+Shop-survey has an attribute called 'Descrip10' with use type. Right-click and 'Sort Ascending' to read through the list of names.  Its not a very tidy data-set. Note that there are sometimes several similar names for the same sort of use. You could, however, use this information to select those uses, and then export the selected data to create new layers - first extracting coffeeshop/cafes, and also pubs/bars. (but it takes a long time since the data is messy)
+However there is also another useful attribute called 'CLASS10'. The class type 3 appears to map fairly nicely to the combination of cafes, bars and restaurants that we were looking at. In order to select restaurants and bars - one can 'select by attribute' in CLASS 10
 ![](SHOTS3/selectAttr2.png)
 **Map** > Select by attribute > useclass10 = Class 3
 
