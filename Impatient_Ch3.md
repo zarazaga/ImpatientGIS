@@ -32,7 +32,8 @@ The is a geoprocessing tool - a first, fairly simple manipulation of data.
 
 ![](SHOTS3/export.png)
 
-This new dataset will be placed INSIDE the globaldatabase (.gdb) .  *One can use the 'export features tool to export the whole dataset, into the gdb, or to export only certain elements of it, as here.* 
+This new dataset will be placed INSIDE the globaldatabase (.gdb) which is connected to the Map. *One can use the 'export features tool to export the whole dataset, into the gdb, or to export only certain elements of it, as here.* 
+[is this where I expalin that the data is not inside the map but connected to it?]. This barrel of data is and ESRI format for collecting numerous different types of data together into one packet, and is really useful for working between Pro and online GIS.  The advantage of having one's data in a geodatabase, apart from simplicity is a reduction in the personal level of organisation needed - the links betwen the data and the map are solid and one reduces the tendency to have a map with dreaded red questions marks. The disadvantage is that in order to be independently saved and shared, datasets have to be re-exported as shapefiles.   
 
 ![](SHOTS3/feature2feature.png)
 
