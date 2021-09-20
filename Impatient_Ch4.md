@@ -1,217 +1,201 @@
 # ImpatientGIS
 
 ## Chapter 4
-# Create data: Data tables, Georeferencing and XY table
+# Create data: data tables, XY tables and georeferencing
 
-*based on workshop by Stacey Maples, Geospatial Manager, stacemaples@stanford.edu Stanford Geospatial Center*
-
- The history of modern epidemiology is tied up with the history of mapping. 
-
-[John Snow and Cholera Mapping History Video](https://www.youtube.com/watch?v=VJ86D_DtyWg)
-  --   [(or an  alternative video)](https://www.history.com/topics/19th-century/mankind-the-story-of-all-of-us-videos-cholera-video)
-
-
+For expediency, the data for this chapter is provided. However it could also all be gathered from online open sources.
 **Download** the zip folder:  https://github.com/zarazaga/ImpatientGIS/blob/master/Ch4data.zip
-Right-click the *.zip and Extract All.  
+Right-click the *.zip and Extract All.   
 
-* **snow_map.png** - a non-georeferenced image of the map from John Snow’s original report on the cholera outbreak of 1854.
+The folder contains: 
 
-* **London_boroughs.shp** - the boroughs of the modern city of London.
-**2018Lon_HousingBoro.csv** - table with housing and pop. density
+*London_boroughs.shp* - the boroughs of the modern city of London.
 
-* **Study_Area.shp** - a rectangle describing the area of interest.  
+*2018Lon_HousingBoro.csv* - a table with housing and pop. density
 
-* **deathAddresses.csv**  - a table of addresses affected by the cholera outbreak, their latitude and longitude coordinates, and the number of deaths at each address.  
+*snow_map.png* - a non-georeferenced image of the map from John Snow’s original report, 1854.
 
-*backup data folder contains versions of files created during the workshop.* 
+*Study_Area.shp* - a rectangle describing the area of interest.  
 
-## 4.0 Look at John Snow's 'snow_map’ 
-(open from within the Ch4 data folder)
+*deathAddresses.csv*  - a table of addresses affected by the cholera outbreak, their latitude and longitude coordinates, and the number of deaths at each address. 
+
+## 4.0 Spatial Epidemiology following John Snow. 
+
+ *based on workshop by Stacey Maples, Stanford Geospatial Center* 
+ 
+ The history of modern epidemiology is tied up with the history of mapping. [John Snow and Cholera Mapping History Video](https://www.youtube.com/watch?v=VJ86D_DtyWg) 
 ![](/SNOW/SnowMap.png)
 
-This is the famous map drawn by Dr John Snow, the founding father of modern epidemiology.  London suffered a series of cholera outbreaks during the mid-19th century, and Snow theorized that cholera was spread through contaminated water, rather than the prevailing theory of spread through "miasma" in the air.  London's water supply system consisted of shallow public wells where people pumped water to carry home; the sewage system of privies emptied into cesspools or cellars. The pervasive stench made the miasma theory very plausible. 
+This is the famous map drawn by Dr John Snow, the founding father of modern epidemiology. *(open from within the Ch4 data folder)* London suffered a series of cholera outbreaks during the mid-19th century, and Snow theorized that cholera was spread through contaminated water, rather than the prevailing theory of spread through "miasma" in the air.  London's water supply system consisted of shallow public wells where people pumped water to carry home; the sewage system of privies emptied into cesspools or cellars. The pervasive stench made the miasma theory very plausible. 
 
 During the 1854 cholera outbreak Snow mapped the 13 public wells and all the known cholera deaths in the Soho district, and noted the spatial clustering of cases around the Broad Street water pump.  He managed to have the pump handle removed from the Broad Street pump and the outbreak quickly subsided. Arguing against traditional medicine, Snow subsequently published a map of the epidemic to support his theory, showing the locations of the 13 wells and the addresses of the 578 cholera deaths, marked as stacked black bars.  
 
-Explore the cholera outbreak of 1854 and re-determine whether there is evidence that the Broad Street pump is the source of the outbreak. Map the locations and numbers of the cholera deaths, and geospatially compare them to the nearest water pumps.
+Locate the area of the outbreak in today's London, comparing areas of urban density.  Then  further explore the cholera outbreak of 1854 and re-determine whether there is evidence that the Broad Street pump was the source of the outbreak, by mapping the locations of the cholera deaths, and spatially comparing them to the sites of the water pumps.
 
-## 4.1 Join a data Table: Illustrate London's population density
+## 4.1 Join a table to a spatial layer: 
+
+The first task is to calculate, and illustrate, London's population density.  
 
 Open a new ArcGIS Pro document and **Insert** > New Map.
-
 Add London Borough data: **Insert** -> Add Folder -> browse to the folder which *contains* the data (not the data itself)-> OPEN. 
 
-Browse to the folder > **data > London_Borough.shp** Drag the shapefile onto the map.  And drag the table **2018Lon_HousingBoro.csv** onto the contents file.  
+IN the catalogue browse down to the folder > **data > London_Borough.shp** Drag the shapefile onto the map.  
 
 ![](/SNOW/london.png)  
 
-Click on the London_borough Layer.  Open **Feature Layer** > *Data* > attribute table *( or shortcut- right-click layer)*
+What attribute might be used to illustrate population density? Search for a population attribute: click on the *London_borough* Layer.  Open **Feature Layer** > *Data* > attribute table *( or shortcut- right-click layer)*
 
 ![](SNOW/attributeTable.png)
 
-There isn't much useful data here, beyond the shapes of the boroughs. But there is a GSS_CODE, which will allow the connecting of this dataset to any other data-table which has the same code. Rows with matching numbers can be joined between one dataset and another. 
+While the area of the borough is here there is no useful data about population.  Note there is a column called *GSS_CODE*. 
+
+There are different kinds of tables in GIS. An attribute table shows the data available about a feature-set- it shows the linked data for a GIS layer, once it is already spatially visualised. 
+
+Drag the table **2018Lon_HousingBoro.csv** onto the contents file.  This table is a .csv file, with comma separated values (which can be exported from excel). It can have all kinds of data - but in this case it doesnt have any lat-long information or other spatial data.
 
 Open the table. **Standalone data** > Table > Attribute Table. 
 
-Look at the attribute table to figure out first, if it shares the GSS_CODE, and secondly what data we could join to the borough layers to illustrate population density. 
+Look at the attribute table and note, first, that it also has that same column called GSS_CODE. The same data information in two tables allows us to join one data-set to another, so that rows with matching CODE numbers can be joined - connecting the additional information to the spatial dataset. Study the dataset further to ensure that the GSS_CODE is indeed common to both, and secondly to see what data cam be joined to the borough shape layers to illustrate population density. 
 
 ![](SNOW/table.png)
 
-PopPr_SqKm defines population density per square Km for each London borough. Join the table to the feature layer.
+*PopPr_SqKm* defines population density per square Km for each London borough. 
 
-Select the London_borough Layer. **Feature Layer** > Data > Joins (down arrow) > Add Join. *(Shortcut: right-click on the layer > Joins & Relates > Add Join)*
+### Join the table to the feature layer.
+
+Select the London_borough layer. **Feature Layer** > Data > Joins (down arrow) > Add Join. *(Shortcut: right-click on the layer > Joins & Relates > Add Join)*
 Input Join Field: **GSS_CODE**; Output Join Field: **Code**
 
 ![](SNOW/Join.png)
 
-Check in the attribute table of the London_borough Layer to make sure that the join worked!
+Check the attribute table of the London_borough Layer to make sure that the join worked! The layer should have the additional columns added on at the end of the row.
 
-Save the joined file as a new, stable Layer in the project globaldatabase (gbd). 
-**Feature Layer** > Data > Export >Feature Class to Feature Class
+Save (or export) the joined file to create a new, stable layer of combined data in the project globaldatabase (gbd). 
+**Feature Layer** > Data > Export >Feature Class to Feature Class.  
 Output Feature Class: **London** > Run.
 
-![](export.png)
 
-*(ps. the 'backup data' folder contains a joined 'London' shapefile- just in case!)*
+*(note. the 'backup data' folder contains a joined 'London' shapefile- just in case!)*
 
-Change the symbology of the London layer to show relative population density. 
+Create a map with london borougs illustrating population density.
+The symbology should probably be graduated colors, showing relative population density; a classification method should be selected, and lables shown.
 
 **Feature Layer** > Appearance > Symbology > slide down to **Graduated Colors**
 
-Field > **PopPr_sqKm** > Select *quantile* classification method to show equal numbers of boroughs per class.
+Field > **PopPr_sqKm** >  *quantile* classification method, (a good choice to show equal numbers of boroughs per class).
+Label the Boroughs: **Feature Layer** > *Labeling* > ‘Label’> default Field 'Name'. 
 
 ![](SNOW/London_quantiles.png) 
 
-Lable the Boroughs: **Feature Layer** > *Labeling* > ‘Label’> default Field 'Name'. 
 
-*(For clarity one could turn off this layer while working on the new layer)*
+## 4.2 Compare historic area of disease to modern population density. 
 
-## 4.2 Compare Historic area of disease to today's population density. 
+The *Study Area8* polygon describes the zone of John Snow's study. Compare its location to the areas of density in modern London.
 
-The 'Study Area' polygon describes the zone of John Snow's study. Compare its location to the areas of density in modern London.
-
-Catalog > drag **Study_Area.shp** onto the Map. Zoom into the small square *(or right-click to ‘zoom to Layer’)*
-**Appearance** > Symbology > properties > change the fill to 'No_Color', and the border line to a strong color, to make a square frame instead of a colored square.  
+Catalog > drag **Study_Area.shp** onto the Map.  Zoom into the small square *(or right-click to ‘zoom to Layer’)*.  Make a square frame instead of a colored square; change the fill to 'No_Color', and the border line to a contrasting color.
+**Appearance** > Symbology > properties > 
 
 ![](SNOW/add_layer.png)
 
 ### Spatial Bookmarks
 
-To easily return to this area of interest, one can create a spatial bookmark: **Map** > Bookmarks  > New Bookmark > Name it **“SOHO”**. 
+To easily return to this area of interest, one can create a spatial bookmark: **Map** > Bookmarks  > New Bookmark > Name it **“Soho”**. 
 
-Zoom back out to the density map; and make sure the 'study area' sqaure frame is visible, then test **Map** > Bookmarks > Soho to return.
+Zoom back out to the density map, make sure the 'study area' sqaure frame is visible, then test the Bookmarks to return to Soho.
 
-*The cholera outbreak happended in one of the densest parts of historic London.  This map encourages a discussion about areas of high historic and current population density in central London.  It would be interesting to show this population density in 3D, as in Chapter 2*.  
+*The cholera outbreak happended in one of the densest parts of historic London.  This comparitive map encourages a discussion about areas of high historic and current population density in central London.  It could be interesting to also show this population density in 3D*.  
 
-**Save.**
-*(Turn off the 'London Boroughs' layer)*
-
-
+**Save.** [remember there is no autosave in GIS]
 
 ## 4.3 Create new Data: Georeference a paper map  
 
-To determine whether there is evidence that the Broad Street pump was the source of the cholera outbreak of 1854, one needs to know which deaths took place near which water-pumps. Each death address must be allocated to a pump according to its proximity to that pump.  We have, in our data folder, a table with the addresses and the deaths. But we will need to compare that information to the spatial location of the pumps. 
-
-We will need to create a new dataset with the locations of the historic pumps, data which must be extracted from John Snow's original 1854 cholera outbreak map, by ovelaying the paper map onto the correct site within our GIS, and tracing the points from it. 
+To identify the volumne of deaths around each water-pump, one needs to be able to relate these addresses to the spatial location of the pumps. To create a new historic-pump dataset, the original 1854 paper map must be overlaid onto the correct site in our GIS, and the pump-locationed traced from it. 
+*( For clarity turn off the 'London Boroughs' layer)*
 
 Catalogue > data folder > drag **snow_map.png** into the **Map**. 
 *(Click Yes if you are prompted to "Build pyramids". If it doesn’t prompt, you might need to come back to this and right-click on the layer.)*
-![](SNOW/pyramids.png)
-Where is it? Added to **Contents**, the layer isn't visible in the Map. Right-click > zoom to layer.  It is probably in the ocean! The GIS has no reference to identify where this map should be located in the world. 
+
+Where is it? The layer isn't visible in the Map. Right-click > zoom to layer, it is probably in the ocean at 'null island' again! The GIS has no reference to identify where this map should be located in the world. 
 
 ### Georeference
+
+Move the map to the correct location in the world, and stretch and scale it to a best match. 
 
 Select *snow_map.png* >  **Imagery** tab > Georeference icon, to open the **Georeferencing** Tool bar > Georeference.
 
 ![](SNOW/georeferencebutton.png)  
 
-Right-click > "Zoom to layer *snow_map.png* > use the mouse scroll button to navigate to the upper left corner of the image, and find *Regent Circus* .
+Choose place on the map that can be matched to contemporary sites in the city. Right-click > "Zoom to layer *snow_map.png* > use the mouse scroll button to navigate to the upper left corner of the image, and find *Regent Circus* .
 Georefence Ribbon > **Add Control Points** > place 'Control Point' at the center of *Regent Circus*.  
 ![](SNOW/firstgcplink.png)  
 Right-click > "Zoom to ...  *Study_Area*> mouse scroll wheel zoom into the same area of *Regent Circus*, and place the second **GCP** link at that location. The map image will automatically "snap" these two GCP links together. *(If it remains invisible, save and close georeferencing, then re-open. This just happens sometimes)* 
 
 ![](SNOW/secondgcplink.png)  
 
-Similarly, use the scroll wheel to navigate to the bottom right corner of the 'snow_map.png' layer to find the intersection of *Oxendon Street & Coventry Street*. This is an intersection that has remained consistent through the city development.  Add a **Ground Control Point** link at the intersection.
-Toggle off the visibility of the 'snow_map.png' > right-click > Zoom to..*Study_Area*. 
-Locate the corresponding intersection in the now visible basemap and place the second link of the **Control Point**. 
-Turn on the 'snow_map.png' layer to check that it has "snapped" these two links together, as before. 
+It's best to use points at opposite sides of the paper map. However on the bottom right *Prices street*, has changed name. The intersection at *Oxendon Street & Coventry Street* has remained consistent.  Add a **Ground Control Point** link at the intersection.
+Un-click visibility of the 'snow_map' > right-click > Zoom to *Study_Area*. Locate the corresponding intersection in the basemap and place the second **Control Point**. 
+Turn on the 'snow_map.png' layer to check that it has "snapped" the links together. 
 
 Locate and place 3 more **Ground Control Points** (1 in each remaining corner and one near the center).  Try Soho sqaure! 
 
 ![](SNOW/allgcp.png)
 
 In case of a mistake, open up the **control point table**.  Turn off each point one-by-one to see which is faulty, then select and delete that point. 
-The **Georeference** tools operate within an external editing session; one needs to separately save this session with the **Save** button of the toolbar, then **Close Georeference**. 
+The **Georeference** tools operate within an external editing session; one needs to separately save this session with the **Save** button of the toolbar, then **Close Georeference** on the top ribbon, to finish the editing session. 
 
-*Observation: In Windows Explorer, browse to the **data** folder; note that new files have been added including **snow_map.png.pgwx**. This is the "World File" for the image just georeferenced; as long as this file accompanies the **snow_map.png** file, all GIS applications, such as Google Earth, ArcGIS, QGIS, etc.. should be able to co-locate this image with other datasets.*
+*Observation: In windows explorer, browse to the **data** folder; note that new files have been added including **snow_map.png.pgwx**. This is the "World File" for the image just georeferenced; as long as this file accompanies the **snow_map.png** file, all GIS applications, such as Google Earth, ArcGIS, QGIS, etc.. can co-locate this image.*
 ![](SNOW/worldfile.png)
 
-Be sure to **Close Georeference** on the top ribbon, to finish the editing session. 
  
 ## 4.4 Create new Data: Digitize features from a georeferenced map
 
-*(If the last section didn't go well, add the `John_Snow_Map.tif` from the backup_data )* 
+*(If the last section didn't go well, add the georeferenced `John_Snow_Map.tif` from the backup_data )* 
 
-In order to trace, and digitize the locations of the **Water Pumps** in the neighborhood, from the paper map, an empty layer must be created in the .gdb to hold those new points.  
+In order to trace and digitize the locations of the **Pumps** from the paper map, an empty layer must be created in the .gdb to hold those new points.  
 
-Catalog panel > **Databases** > right-click on **Default.gdb** > **New > Feature Class**   
+Catalog panel > **Databases** > right-click **Default.gdb** > **New > Feature Class**  (the gdb could have the saved file name)
 ![](SNOW/newfeatureclass.png)  
 Create Feature Class > Define >  **Name:** pumps; **Alias:** Water Pumps; **Feature Class Type:** Point > **Next**.  
 ![](SNOW/newfcstep1.png)  
+Add a new test field for the pump name called *label*.
+
  **Field Name:** Label; **Data Type:** Text. > **Next**.  
-![](SNOW/newfcstep2.png)  
+
 Leave the **Spatial Reference** default **Bitish National Grid**. *(A projected system, this reference will allow for accurate measurements in meters, rather than degrees)*.  
 
-### Add points to the Feature Class "Pumps"
+Drag the new **pumps** Feature Class into the Map. The layer is added to Contents, with the alias: **Water Pumps**. In order to be able to add the names of the pumps, open the attribute table, and leave it open. *(reminder: Water Pumps layer > Feature Layer > Data > Attribute Table /or right-click)*. 
 
-Drag the new **pumps** Feature Class into the Map. The layer is added to Contents, with the alias: **Water Pumps**. 
+### Editing: add points to a Feature Class
 
-As spatail data points are added, new fields can be added too. In preparation for this, open the **Attribute Table**: 
-Select the Water Pumps layer > **Feature Layer** > Data > Attribute Table *(or right-click)*. 
-
-Select the **Water Pumps** layer > **Edit** Tab > activate the **Edit** tools ribbon. 
+Any drawing or editing on a GIS layer is done under the **Edit** ribbon.
+Select **Water Pumps** layer > **Edit** Tab > activate the **Edit** tools ribbon. 
 
 ![](SNOW/edittoolbar.png)  
-
-Click on **Create** tool > a set of templates for each vector data layer appear in a  **Create Features** panel on the right.
 ![](SNOW/createbutton.png)  
+Click on **Create**  > a set of templates for each vector data layer appear in a **Create Features** panel on the right.
 From the **Water Pumps** template select the Water Pump point.   Locate a Water Pump in the **snow_map.png** image, and click on it to place the point. Tick the 'check mark' in the floating tool-bar.
-In the Attribute Table, double-click on the new record under the **Label** field and enter a text-name for the Label field (use the name of the nearest street), then, to approve that name, be sure to hit RETURN.
+In the Attribute Table, double-click on the new record under the **Label** field and enter a text-name for the Label field (use the name of the nearest street), and RETURN to save.
 
 Repeat for the remaining 12 water pumps in the Snow Map. (There are 13 pumps in all; one is almost hidden along the border right near the edge.) 
 
 ![](SNOW/editpoint.png)
   
+As with the georeferencing process, all edits within an edit-session have to be saved separately from saving the map-file itself. Click **Save** and confirm to save edits.  Close the **Create Features** panel to close the edit session, and close the attribute table.
 
-All edits within an edit-session have to be saved separately from saving the map itself. Click **Save** and confirm to save edits.  Close the **Create Features** Panel to close the edit session.
-Close the Water Pumps Attribute Table.
+Make the new GIS data ready to use; turn off the paper-map, and label the pumps. *(reminder: Feature Layer > Labeling > Label > Field: label)*.
 
-Turn offthe paper-map. 
+## 4.5 Create new Data: make a layer from an XY table
 
-Label the pumps with the new ttribute: **Feature Layer** > Labeling > Label > Field: label.
+Add the data for the cholera deaths. In the data folder, the dataset which describes the cholera-death locations is a table, not defined as a spatial data set.  In Pro, **Catalogue** > drag  ‘deathAddresses.csv into the contents window. Open and study the table: **Standalone Table** Tab > Data > Attribute Table.  Each line in the table is an address, with the number of cases at the adress, the address (as text), and the xcoordinate and y coordinates of that adress. *Which one is latitude. or longitude?  Notice how small the longitude number is- why?*
 
+Use the Geoporcessing tool: add XY point data, which allows one to specify unidentified columns as lat. and long. data. 
 
-## 4.5 A new Data layer from an XY table: Deaths at each address
-
-Now the pumps are represented, add the data for the cholera deaths. 
-
-From the data folder, the dataset which describes the cholera-death locations is a table, not defined as a spatial data set.  Open it from the folder. Each line in the table is an address, with the number of cases at the adress, the address writen as text, and the latitude and longitude coordinates of these addresses.  
-*Notice how small the longitude number is- why?*
-
-In Pro, **Catalogue** > drag  ‘deathAddresses.csv file onto the contents window.
-
- **Map** Tab > Add Data >  **Add XY Point Data**. This will open the *‘Geoprocessing’* tools window, with the tool: **XY Table to Point**.  *(Also find under Analysis > Tools > search for ‘XY’)*. 
+ **Map** Tab > Add Data >  **Add XY Point Data**. This will open the *‘Geoprocessing’* window and the tool: **XY Table to Point**.  *(or search under Analysis > Tools > search for ‘XY’)*. 
 
 ![](SNOW/XYpointdata.png)
 
-
-Under **Output Feature Class**, note that the new feature class will be exported to the ‘globaldatabase (gdb) as the default location for all new data.  
-Replace the default name with "**Deaths**" and remaining settings as shown: *Make sure the coordinate system is set to 'GCS_WGSS_1984' so that the data can be recognised on a long/lat system.*
-
-![](SNOW/XYtopoints.png)
-
-**Run**. Points are added to the **Map** and the new layer to **Contents**.
+Note under *Output Feature Class* that the new feature class is saved in the ‘globaldatabase (gdb) as default.  
+Replace the Output Feature Class name with "**Deaths**" and the remaining settings as shown: *Make sure the coordinate system is set to 'GCS_WGSS_1984' so that the data can be recognised on a long/lat system.* **Run**. Points are added to the **Map** and the new layer to Contents.
 
 ![](SNOW/deathsadded.png)
 

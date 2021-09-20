@@ -69,13 +69,15 @@ Run the calculation. Then check the new field. Right-click on the column and **S
 
 To get the data into 3-d, first check the coordinate system - Is the map projecting to a curved surface or a flat surface?
 
-On the Anlysis Tab > Environments >
+*All GIS data is located, through its lat-long data, at a specific place on the globe.  That georaphic location doesn't change.  But the way that the map makes that data visible, changes according to the particular strategy that the map-maker choses to use, to project the elemets of that geographic data onto flat screen- or page.* see  https://www.esri.com/arcgis-blog/products/arcgis-pro/mapping/gcs_vs_pcs/ 
+
+On the Anlysis Tab > Environments > Output Coordinates
 
 ![](SHOTS2/BritishNat.png) 
 
 The British National Grid is like a flattened grad set across the UK. So we will make a local 'scene'.
 
-*The choice between local and global depends on the projection type - or on how the physical world is visualised on a flat screen. This specific data came using a 'flattened' projection, like a folded city-map from which distances can be measured, rather than the 'geographical' system which is curved like a classroom globe.*
+*The choice between local and global depends on the scale of the data - on whether you want to make a 3d of a flat surface (like a city), or see 3-d world data on a globe. This specific data came from a dataset which was projected onto the British grid using a 'flattened' projection, like a folded city-map from which distances can be measured, rather than the 'geographical' system which is curved like a classroom globe.*
 
 View > Convert > to Local Scene
 
@@ -83,7 +85,7 @@ View > Convert > to Local Scene
 
 Return to **Map**>Explore> Use the mouse wheel button to zoom back from the 3d model. 
 
-Drag the layer from the **2D Layers** up into the **3D Layers** section in *Contents* to create a volumetric visualisation of the density of activits in SUM_ELECNO.  
+Drag the layer from the **2D Layers** up into the **3D Layers** section in *Contents* to create a volumetric visualisation of the density of activities in SUM_ELECNO.  
 
 Instruct the data to read density as the 'z'value.
 
@@ -101,3 +103,5 @@ Create a new custom 'Field' expression.
  Double-click on 'AcDenisty' and multiply by something like 50.  
 
 ![](SHOTS2/3d.png)
+
+*What does this map show? What are the neighborhoods with extra-tall data towers, compared to the very low ones . .and what do you think this could reveal to the city?*

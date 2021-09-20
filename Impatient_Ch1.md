@@ -31,7 +31,9 @@ For a test-run GIS, one could start with any data. In this case, search for:
 
 and find some point, line and polygon data to practice with. In this case we could the City of Edinburgh council mapping portal. 
 
-For each dataset, **Download** the **Shapefile** (not the full dataset). Move it somewhere on your computer into a new folder (in an organised place for all your GIS data) which you name something like 'edinburgh downloads'. **Shapefiles** are packaged in zip folders that must be un-zipped for use. (It is easy to forget.) Unzip (right-click, **extract all**) - and remember where it is.
+Start with *'tramline'* line data (the Edinburgh tramline to the airport)
+
+For this, (and each dataset in the list below), find the download button, and **Download** the **Shapefile** (not the full dataset). Create a new parent folder somewhere specific on your computer (in an organised place for all your GIS data) and name it something like *'edinburgh downloads'*.  Move the downloaded files into the new folder.  **Shapefiles** are packaged in zip folders that must be un-zipped for use. (It is easy to forget.) Unzip each dataset, (right-click, **extract all**) - and remember where the folder is.
 
 Download more data:
 
@@ -39,38 +41,40 @@ Download more data:
 
 *'polling stations'*  point data (where people go to vote) 
 
-*'tramiline'* line data (the Edinburgh tramline to the airport)
-
 *'gritting routes'* line data (streets that receive priority for ice-gritting )
 
-*'Natural Neighbourhoods'* is a useful polygon dataset of the way people name their neighborhoods with an attribute called "SUM_ELECTNO' of the numbers of voters. 
+*'natural neighbourhoods'* a polygon dataset of edinburgh neighborhoods with an attribute "SUM_ELECTNO' of the numbers of voters in each. 
 
 ## 1.3 Add vector data to a Map
 
-The Catalog is the site to add data, but our MyProject > Folders contain an empty data folder, and empty MyProject.gdb geodatabase.  Eventually good analysts transfer all useful data into that .gdb barrel. But today we are impatient. Lets just get what we have found onto the map! 
+The Catalog is the site to add data; in a new map, the *MyProject > Folders* contain an empty data folder, and an empty MyProject.gdb geodatabase.  One can load data first into this barrel.  And eventually good GIS analysts transfer all useful data that they are working with  into the project's .gdb barrel, for tidy and rigorous work. But today we are impatient. Lets first get that data we have found onto the map! 
 
-The **Insert** tab serves to start ambitious new project stages- New Maps, New Cartography, New Folders. 
- **Add Folder** connects the catalouge to the folder where you data is. 
+Along the top of the window are a series of primary TABS: Project, Map, Insert etc. each of which revels its own *ribbon* of tools.  
+
+The **Insert** tab serves as the ribbon to start ambitious new project stages- New Maps, New Cartography, New Folders. 
+ **Add Folder** allows the map to connect the catalogue to the folder on the computer where data is. 
 
 **Insert** -> Add Folder -> browse to the folder which *contains* the data (not the data itself)-> OPEN. 
 
-The folder appears in your Catalogue. Open each sub-folder.
+The folder appears in your Catalogue. Open each sub-folder to see the data.
 
 ![](SHOTS1/dataList.png)
 
 Icons describe which is a point, line or polygon type.  Drag each dataset (feature) onto your map.  
 ![](SHOTS1/ScreenAdd.png)
 
+At this point the data is visible. The GIS has created a link between the map and the data folder, and has given instructions on how to make each data point visible, locate it on a geographic point in relation to other points, and give it a color and thickness.  Conceptually this is a tranlation of one way of seeing (a chart), to another way of seeing (a map). The data itself is not changed, and it has not been copied onto the map.  If you delete the data folder (or move it), that data will disappear from the map also, replaced by the dreaded red exlamation point. Its good to remember that the data itself isn't IN the map - but either in a shapefile folder, or, later, transfered into a geodatabase format. 
+
 #### ESRI Basemap Data
-ArcGIS Pro provides a default cartographic basemap for geographic context.   **Map**  > **Basemap** >  select ‘Light Grey Canvas’ or an alternative basemap.
+ArcGIS Pro provides several images as cartographic basemap for geographic context.  It is good practice not to reply on the default basemaps - eventually good cartography requires building your own background or base-data. But before then, at least one should find the best alternative base:   **Map**  > **Basemap** >  select ‘Light Grey Canvas’ or an alternative basemap.
 
 ![](SHOTS1/basemap.png) 
 
 ### Layers 
-**Feature Classes** (or sets of data) become **Layers** once you drag them onto a map and visualise them. **Contents** determines layer display order in 'Drawing Order Mode'.  Drag polygon layers to the bottom of **Contents**, and drag points to the top. Turn off one of the busy layers. 
+**Feature Classes** (or sets of data) become **Layers** once you drag them onto a map and visualise them. **Contents** determines layer display order in 'Drawing Order Mode'.  Drag polygon layers to the bottom of **Contents**, and drag points to the top. Turn off some of the busy layers to see others. 
 
 ## 1.4 Explore Navigation Tools and Visibility 
-GIS navigation is familiar using the mouse and mouse wheel.  Press to Pan, role to zoom. On the **MAP** tab > Navigate > find the various ‘zoom options.  Glide over each tool to describe it.  They’re fairly self-explanatory; try them!
+GIS navigation is familiar using the mouse and mouse wheel.  Press to Pan, role to zoom. Explore the **Map** tab ribbon.  From **MAP** tab > Navigate > find the various ‘zoom options.  Glide over each tool to describe it.  They’re fairly self-explanatory; try them!
 
 ![](SHOTS1/explore.png) 
 
@@ -103,12 +107,14 @@ Shortcuts: eventually many Ribbon-tab tasks have quick-access. e.g:
 
 *save: ctrl S*   . . . . . . . . . .Now **SAVE** the map.
 
-Many users of GIS stop here- they download data, make aspects of it visible, and change colors and symbology to reveal the aspects they wish to illustrate. But the most interesting part of GIS is not just to visualize, but to analyse. There are two design issues here- design a map, and then design a reserach question to ask of the data. 
+Many impatient users of GIS can stop here- Users have learnt to download data, to make specific aspects of it visible, and to change colors and symbology to reveal those aspects they wish to illustrate. But the most interesting part of GIS is not just to visualize, but to analyse. 
 
-## 1.6 Invent a first Question to ask the data . .
+There are two design issues - to design a map, but also to design a reserach question to ask spatial questions of that data. 
 
-*How might one help the City select priorities for extending the tram-lines? What activites could be served by tram? What alternative routes could be proposed?*
+## 1.6 Inventing first Questions to ask the map-data . .
 
-Work with the data. Turn some layers off. Make a beautiful map to reveal the relevant information, and answer the question. 
+*How might one help the City select priorities for extending the tram-lines? What additional activites/sites could be served by tram? What alternative routes could be proposed?*
+
+Work with the data. Turn some layers off, and use others to answer the question.  Make a beautiful map to reveal the relevant supporting information.
 
 ![](SHOTS1/TramLine.png)
