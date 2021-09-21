@@ -241,13 +241,4 @@ The **Add WMTS Server Connection** dialog box appears. Paste the URL of the WTMS
 In the catalog paine, the maps.georeferencer appears under the folder **Servers**. Expland the down arrow, and drag the map "Gerend von London' onto the **Map** page. It will take a while to load. 
 
 [Continue to Chapter 5](https://github.com/zarazaga/ImpatientGIS/blob/master/Impatient_Ch5.md)
-NEW CHAPTER HERE
 
-## 5.x Statistics on an Attribute field  
-
-Obtain a simple statistical snapshot of the number of deaths at each address from the data in the Attribute Table. *(Make sure the layer is selected).* 
-
-Open the Attribute table: **Feature Layer** > Data > Attribute Table  *(Shortcut:right-click)*
- **Num_Cases** shows the number of deaths at each address. Right-click on the header of **Num_Cases** and select **Statistics**.  A histogram of the data distribution will appear over the top of the Attribute Table, and a "Distribution of Num_Cases" panel will appear in the tabbed panel area on the right. 
-
-![](SNOW/Statistics.png)   
