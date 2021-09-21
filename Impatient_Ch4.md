@@ -122,7 +122,16 @@ Replace the Output Feature Class name with "**Deaths**" and the remaining settin
 
 ![](SNOW/deathsadded.png)
 
-## 4.4 Create new Data: Georeference a paper map  
+## 4.4 Proportional symbols: Show relative quantities
+
+The dots are all alike. Change the symbology to show, with the size of the circle, the different numbers of people who died at each address.  
+ **Appearance** > Symbology *(Or right-click)* Change 'Single Symbol' to **Proportional Symbols** and set Field = Num_Cases.  
+ In the **Histogram** the range of values for the Num_Cases was 1-18. So set Minimum size = 1.00 and Maximum size = 18.  On the Template for **symbol** select a larger circle- say Circle 3 at (40%). 
+
+![](SNOW/proportional.png)
+![](SNOW/pumpswithlabels.png)  
+
+## 4.5 Create new Data: Georeference a paper map  
 
 To identify the volumne of deaths around each water-pump, one needs to be able to relate these addresses to the spatial location of the pumps. To create a new historic-pump dataset, the original 1854 paper map must be overlaid onto the correct site in our GIS, and the pump-locationed traced from it. 
 *( For clarity turn off the 'London Boroughs' layer)*
@@ -162,7 +171,7 @@ The **Georeference** tools operate within an external editing session; one needs
 ![](SNOW/worldfile.png)
 
  
-## 4.5 Create new Data: Create a new Feature Set, & Digitize features from a georeferenced map
+## 4.6 Create new Data: Create a new Feature Set, & Digitize features from a georeferenced map
 
 *(If the last section didn't go well, add the georeferenced `John_Snow_Map.tif` from the backup_data )* 
 
@@ -198,15 +207,6 @@ Repeat for the remaining 12 water pumps in the Snow Map. (There are 13 pumps in 
 As with the georeferencing process, all edits within an edit-session have to be saved separately from saving the map-file itself. Click **Save** and confirm to save edits.  Close the **Create Features** panel to close the edit session, and close the attribute table.
 
 Make the new GIS data ready to use; turn off the paper-map, and label the pumps. *(reminder: Feature Layer > Labeling > Label > Field: label)*.
-
-## 4.6 Proportional symbols: Show relative quantities
-
-The dots are all alike. Change the symbology to show, with the size of the circle, the different numbers of people who died at each address.  
- **Appearance** > Symbology *(Or right-click)* Change 'Single Symbol' to **Proportional Symbols** and set Field = Num_Cases.  
- In the **Histogram** the range of values for the Num_Cases was 1-18. So set Minimum size = 1.00 and Maximum size = 18.  On the Template for **symbol** select a larger circle- say Circle 3 at (40%). 
-
-![](SNOW/proportional.png)
-![](SNOW/pumpswithlabels.png)  
 
 
 ## 4.7 Finding and Using an already Georeferenced map online
