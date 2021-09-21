@@ -107,7 +107,22 @@ Zoom back out to the density map, make sure the 'study area' sqaure frame is vis
 
 **Save.** [remember there is no autosave in GIS]
 
-## 4.3 Create new Data: Georeference a paper map  
+## 4.3 Create new Data: make a layer from an XY table
+
+Add the data for the cholera deaths. In the data folder, the dataset which describes the cholera-death locations is a table, not defined as a spatial data set.  In Pro, **Catalogue** > drag  ‘deathAddresses.csv into the contents window. Open and study the table: **Standalone Table** Tab > Data > Attribute Table.  Each line in the table is an address, with the number of cases at the adress, the address (as text), and the xcoordinate and y coordinates of that adress. *Which one is latitude. or longitude?  Notice how small the longitude number is- why?*
+
+Use the Geoporcessing tool: add XY point data, which allows one to specify unidentified columns as lat. and long. data. 
+
+ **Map** Tab > Add Data >  **Add XY Point Data**. This will open the *‘Geoprocessing’* window and the tool: **XY Table to Point**.  *(or search under Analysis > Tools > search for ‘XY’)*. 
+
+![](SNOW/XYpointdata.png)
+
+Note under *Output Feature Class* that the new feature class is saved in the ‘globaldatabase (gdb) as default.  
+Replace the Output Feature Class name with "**Deaths**" and the remaining settings as shown: *Make sure the coordinate system is set to 'GCS_WGSS_1984' so that the data can be recognised on a long/lat system.* **Run**. Points are added to the **Map** and the new layer to Contents.
+
+![](SNOW/deathsadded.png)
+
+## 4.4 Create new Data: Georeference a paper map  
 
 To identify the volumne of deaths around each water-pump, one needs to be able to relate these addresses to the spatial location of the pumps. To create a new historic-pump dataset, the original 1854 paper map must be overlaid onto the correct site in our GIS, and the pump-locationed traced from it. 
 *( For clarity turn off the 'London Boroughs' layer)*
@@ -147,7 +162,7 @@ The **Georeference** tools operate within an external editing session; one needs
 ![](SNOW/worldfile.png)
 
  
-## 4.4 Create new Data: Digitize features from a georeferenced map
+## 4.5 Create new Data: Create a new Feature Set, & Digitize features from a georeferenced map
 
 *(If the last section didn't go well, add the georeferenced `John_Snow_Map.tif` from the backup_data )* 
 
@@ -184,31 +199,7 @@ As with the georeferencing process, all edits within an edit-session have to be 
 
 Make the new GIS data ready to use; turn off the paper-map, and label the pumps. *(reminder: Feature Layer > Labeling > Label > Field: label)*.
 
-## 4.5 Create new Data: make a layer from an XY table
-
-Add the data for the cholera deaths. In the data folder, the dataset which describes the cholera-death locations is a table, not defined as a spatial data set.  In Pro, **Catalogue** > drag  ‘deathAddresses.csv into the contents window. Open and study the table: **Standalone Table** Tab > Data > Attribute Table.  Each line in the table is an address, with the number of cases at the adress, the address (as text), and the xcoordinate and y coordinates of that adress. *Which one is latitude. or longitude?  Notice how small the longitude number is- why?*
-
-Use the Geoporcessing tool: add XY point data, which allows one to specify unidentified columns as lat. and long. data. 
-
- **Map** Tab > Add Data >  **Add XY Point Data**. This will open the *‘Geoprocessing’* window and the tool: **XY Table to Point**.  *(or search under Analysis > Tools > search for ‘XY’)*. 
-
-![](SNOW/XYpointdata.png)
-
-Note under *Output Feature Class* that the new feature class is saved in the ‘globaldatabase (gdb) as default.  
-Replace the Output Feature Class name with "**Deaths**" and the remaining settings as shown: *Make sure the coordinate system is set to 'GCS_WGSS_1984' so that the data can be recognised on a long/lat system.* **Run**. Points are added to the **Map** and the new layer to Contents.
-
-![](SNOW/deathsadded.png)
-
-## 4.6 Statistics on an Attribute field  
-
-Obtain a simple statistical snapshot of the number of deaths at each address from the data in the Attribute Table. *(Make sure the layer is selected).* 
-
-Open the Attribute table: **Feature Layer** > Data > Attribute Table  *(Shortcut:right-click)*
- **Num_Cases** shows the number of deaths at each address. Right-click on the header of **Num_Cases** and select **Statistics**.  A histogram of the data distribution will appear over the top of the Attribute Table, and a "Distribution of Num_Cases" panel will appear in the tabbed panel area on the right. 
-
-![](SNOW/Statistics.png)   
-
-## 4.8 Proportional symbols: Show relative quantities
+## 4.6 Proportional symbols: Show relative quantities
 
 The dots are all alike. Change the symbology to show, with the size of the circle, the different numbers of people who died at each address.  
  **Appearance** > Symbology *(Or right-click)* Change 'Single Symbol' to **Proportional Symbols** and set Field = Num_Cases.  
@@ -250,3 +241,13 @@ The **Add WMTS Server Connection** dialog box appears. Paste the URL of the WTMS
 In the catalog paine, the maps.georeferencer appears under the folder **Servers**. Expland the down arrow, and drag the map "Gerend von London' onto the **Map** page. It will take a while to load. 
 
 [Continue to Chapter 5](https://github.com/zarazaga/ImpatientGIS/blob/master/Impatient_Ch5.md)
+NEW CHAPTER HERE
+
+## 5.x Statistics on an Attribute field  
+
+Obtain a simple statistical snapshot of the number of deaths at each address from the data in the Attribute Table. *(Make sure the layer is selected).* 
+
+Open the Attribute table: **Feature Layer** > Data > Attribute Table  *(Shortcut:right-click)*
+ **Num_Cases** shows the number of deaths at each address. Right-click on the header of **Num_Cases** and select **Statistics**.  A histogram of the data distribution will appear over the top of the Attribute Table, and a "Distribution of Num_Cases" panel will appear in the tabbed panel area on the right. 
+
+![](SNOW/Statistics.png)   
