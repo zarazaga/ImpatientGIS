@@ -84,6 +84,7 @@ The symbology should probably be graduated colors, showing relative population d
 
 Field > **PopPr_sqKm** >  *quantile* classification method, (a good choice to show equal numbers of boroughs per class).
 Label the Boroughs: **Feature Layer** > *Labeling* > ‘Label’> default Field 'Name'. 
+![](SNOW/London_quantiles.png) 
 
 ![](SNOW/London_quantiles.png) 
 
