@@ -1,7 +1,7 @@
 # ImpatientGIS
 
 ## Chapter 4
-# Create data: data tables, XY tables and georeferencing
+# Create data: join data tables, add XY tables, georeferencing and digitizing
 
 For expediency, the data for this chapter is provided. However it could also all be gathered from online open sources.
 **Download** the zip folder:  https://github.com/zarazaga/ImpatientGIS/blob/master/Ch4data.zip
