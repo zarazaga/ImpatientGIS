@@ -86,7 +86,7 @@ Field > **PopPr_sqKm** >  *quantile* classification method, (a good choice to sh
 Label the Boroughs: **Feature Layer** > *Labeling* > ‘Label’> default Field 'Name'. 
 
 ![](SNOW/London_quantiles.png) 
-
+![](SNOW/London_quantiles.png) 
 
 ## 4.2 Compare historic area of disease to modern population density. 
 
